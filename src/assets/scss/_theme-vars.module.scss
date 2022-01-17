@@ -1,0 +1,29 @@
+:export {
+  primaryMain: #1db954;
+  //secondary
+  secondary1: #000000;
+  secondary2: #393939;
+  secondary3: #191414;
+  secondary4: #ffffff;
+  // Neutral
+  neutral1: #b3b3b3;
+  neutral2: #777777;
+  neutral3: #535353;
+  //other
+  cyan400: #3dd5f3;
+  blue400: #3d8bfd;
+  purple400: #8c68cd;
+  pink400: #de5c9d;
+  red400: #e35d6a;
+  orange400: #fd9843;
+  yellow400: #ffcd39;
+  teal400: #4dd4ac;
+  //gradient
+  gradient1: linear-gradient(to right, #3dd5f3, #3d8bfd);
+  gradient2: linear-gradient(to right, #3d8bfd, #8c68cd);
+  gradient3: linear-gradient(to right, #8c68cd, #de5c9d);
+  gradient4: linear-gradient(to right, #de5c9d, #e35d6a);
+  gradient5: linear-gradient(to right, #e35d6a, #fd9843);
+  gradient6: linear-gradient(to right, #ffcd39, #4dd4ac);
+  gradient7: linear-gradient(to right, #1db954, #4dd4ac);
+}
