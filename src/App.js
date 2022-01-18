@@ -1,10 +1,9 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { themeConfig } from "themes";
-import Typography from "@mui/material/Typography";
-import gradient from "util/gradient";
 import CssBaseline from "@mui/material/CssBaseline";
+import MainLayout from "layout/main";
 const customizations = {
-  mode: "light",
+  mode: "dark",
 };
 // slice of global state
 
@@ -12,6 +11,7 @@ function App() {
   return (
     <ThemeProvider theme={themeConfig(customizations)}>
       <CssBaseline />
+      <MainLayout />
     </ThemeProvider>
   );
 }

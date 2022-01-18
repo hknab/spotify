@@ -8,6 +8,7 @@ const gradient = {
   orange2: colors.gradient5,
   green1: colors.gradient6,
   green2: colors.gradient7,
+  background: colors.gradient8,
 };
 
 export default gradient;
