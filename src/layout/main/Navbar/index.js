@@ -1,10 +1,7 @@
-import Box from "@mui/material/Box";
-function Navbar() {
-  return (
-    <Box
-      sx={{ backgroundColor: "secondary.1", width: "256px", height: "100%" }}
-    ></Box>
-  );
+import Navbar from "components/organisms/Navbar";
+
+function NavbarLayout() {
+  return <Navbar />;
 }
 
-export default Navbar;
+export default NavbarLayout;
