@@ -2,7 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { themeConfig } from "themes";
 import CssBaseline from "@mui/material/CssBaseline";
 import MainLayout from "layout/main";
-import Skeletons from "skeletons";
+import Molecules from "components/molecules/index";
 const customizations = {
   mode: "dark",
 };
@@ -12,8 +12,8 @@ function App() {
   return (
     <ThemeProvider theme={themeConfig(customizations)}>
       <CssBaseline />
-      <MainLayout />
-      {/* <Skeletons /> */}
+      {/* <MainLayout /> */}
+      <Molecules />
     </ThemeProvider>
   );
 }

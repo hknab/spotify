@@ -4,6 +4,8 @@ export default function themePalette(options) {
     mode: options.customization.mode,
     primary: {
       main: colors.primaryMain,
+      dark: colors.primaryDark,
+      light: colors.primaryLight,
     },
     secondary: {
       main: colors.secondary1,

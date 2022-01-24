@@ -1,7 +1,7 @@
 function typography(theme) {
   const { heading } = theme;
   return {
-    fontFamily: "Circular Std",
+    fontFamily: ["'Lato'", "sans-serif"].join(","),
     h1: {
       color: heading,
       fontStyle: "normal",
