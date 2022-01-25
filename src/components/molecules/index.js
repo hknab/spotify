@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Info from "./player/Info";
+import Search from "./Search";
 // // test
 // import { ReactComponent as LikeFillIcon } from "assets/icons/like-fill.svg";
 // import { ReactComponent as MusicFillIcon } from "assets/icons/music-fill.svg";
@@ -25,7 +25,7 @@ function Molecules() {
         },
       }}
     >
-      <Info />
+      <Search />
     </Box>
   );
 }
