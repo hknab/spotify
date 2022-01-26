@@ -1,6 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Search from "./Search";
+import Volume from "./player/Volume";
+import { usePlayerState } from "context/PlayerContext";
+
 // // test
 // import { ReactComponent as LikeFillIcon } from "assets/icons/like-fill.svg";
 // import { ReactComponent as MusicFillIcon } from "assets/icons/music-fill.svg";
@@ -9,6 +11,8 @@ import Search from "./Search";
 // import gradient from "util/gradient";
 
 function Molecules() {
+  const context = usePlayerState();
+  console.log(context);
   return (
     <Box
       sx={{
@@ -25,7 +29,7 @@ function Molecules() {
         },
       }}
     >
-      <Search />
+      <Volume />
     </Box>
   );
 }

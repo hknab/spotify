@@ -1,10 +1,16 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import { usePlayerActions } from "context/PlayerContext";
 function Volume() {
-  const [volume, setVolume] = React.useState(0);
-  const handleChangeVolume = (e) => {
-    setVolume(e.target.value);
+  const [value, setValue] = React.useState(50);
+  const { setVolume } = usePlayerActions();
+
+  const handleChange = (e) => {
+    setValue(parseInt(e.target.value));
+  };
+  const handleChangeCommitted = (e) => {
+    setVolume(parseInt(e.target.value));
   };
   return (
     <Box
@@ -16,8 +22,9 @@ function Volume() {
     >
       <Slider
         aria-label="Volume"
-        value={volume}
-        onChange={handleChangeVolume}
+        value={value}
+        onChange={handleChange}
+        onChangeCommitted={handleChangeCommitted}
         size="small"
         sx={{
           height: "4px",
