@@ -9,7 +9,6 @@ function TimeLine() {
   const { maxTime, time } = usePlayerState();
   const { setTime } = usePlayerActions();
   const [sliderValue, setSliderValue] = React.useState(time);
-  console.log(sliderValue);
   const handleChangeTime = (e) => {
     setSliderValue(e.target.value);
   };

@@ -11,7 +11,6 @@ import { usePlayerState } from "context/PlayerContext";
 
 function Molecules() {
   const context = usePlayerState();
-  console.log(context);
   return (
     <Box
       sx={{
