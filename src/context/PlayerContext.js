@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
 const PlayerData = React.createContext();
 const PlayerSetData = React.createContext();
@@ -10,13 +10,14 @@ const initialData = {
   before: null, //before music item index
   play: true,
   time: 0,
+  maxTime: 185,
   shuffle: false,
   repeat: false,
   volume: 50,
 };
 
 function PlayerContext({ children }) {
-  const [data, setData] = React.useState(initialData);
+  const [data, setData] = useState(initialData);
   return (
     <PlayerData.Provider value={data}>
       <PlayerSetData.Provider value={setData}>
@@ -27,11 +28,12 @@ function PlayerContext({ children }) {
 }
 
 export function usePlayerState() {
-  return React.useContext(PlayerData);
+  return useContext(PlayerData);
 }
 export function usePlayerSetState() {
-  return React.useContext(PlayerSetData);
+  return useContext(PlayerSetData);
 }
+
 export function usePlayerActions() {
   const setPlayerData = usePlayerSetState();
   const setVolume = (vol) =>
@@ -43,6 +45,7 @@ export function usePlayerActions() {
   const setShuffle = () =>
     setPlayerData((prev) => ({ ...prev, shuffle: !prev.shuffle }));
   const setTime = (time) => setPlayerData((prev) => ({ ...prev, time }));
+
   return { setVolume, setPlay, setRepeat, setShuffle, setTime };
 }
 

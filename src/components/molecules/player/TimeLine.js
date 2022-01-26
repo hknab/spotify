@@ -3,18 +3,19 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import gradient from "util/gradient";
+import { usePlayerActions, usePlayerState } from "context/PlayerContext";
+
 function TimeLine() {
-  const [time, setTime] = React.useState(0);
+  const { maxTime, time } = usePlayerState();
+  const { setTime } = usePlayerActions();
   const [sliderValue, setSliderValue] = React.useState(time);
+  console.log(sliderValue);
   const handleChangeTime = (e) => {
     setSliderValue(e.target.value);
   };
   const handleChangeCommitted = () => {
     setTime(sliderValue);
   };
-  React.useEffect(() => {
-    console.log(time);
-  }, [time]);
   return (
     <Box
       sx={{
@@ -34,6 +35,8 @@ function TimeLine() {
         value={sliderValue}
         onChange={handleChangeTime}
         onChangeCommitted={handleChangeCommitted}
+        min={0}
+        max={maxTime}
         size="small"
         sx={{
           height: "4px",
