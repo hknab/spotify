@@ -2,18 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box";
 import MenuItemButton from "components/molecules/MenuItemButton";
 import Divider from "@mui/material/Divider";
-import { ReactComponent as HomeIcon } from "assets/icons/home-bold.svg";
-import { ReactComponent as SearchIcon } from "assets/icons/search-empty.svg";
-import { ReactComponent as LibraryIcon } from "assets/icons/library-empty.svg";
-import { ReactComponent as LikeIcon } from "assets/icons/like-empty.svg";
-const menuItems = [
-  [
-    { text: "Home", Icon: <HomeIcon />, link: "/" },
-    { text: "Search", Icon: <SearchIcon />, link: "/" },
-    { text: "library", Icon: <LibraryIcon />, link: "/" },
-  ],
-  [{ text: "Liked Songs", Icon: <LikeIcon />, link: "/" }],
-];
+import { menuItems } from "navbar-items";
+
 function MenuItems() {
   const renderGroup = (item, index) => {
     return (
