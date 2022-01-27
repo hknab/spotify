@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Skeletons from "skeletons";
 import NavbarHeader from "components/molecules/NavbarHeader";
+import MenuItems from "./MenuItems";
 
 function Navbar() {
   return (
@@ -13,10 +12,12 @@ function Navbar() {
         padding: "32px 31px 32px 31px",
       }}
     >
-      <Grid container direction="column" alignItems="center">
+      <Box
+        sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}
+      >
         <NavbarHeader />
-        <Skeletons component="menu-button" />
-      </Grid>
+        <MenuItems />
+      </Box>
     </Box>
   );
 }

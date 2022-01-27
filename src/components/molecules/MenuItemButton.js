@@ -8,7 +8,6 @@ function MenuItemButton({ icon, text }) {
   return (
     <MenuItem
       sx={{
-        padding: "4px 16px",
         borderRadius: "40px",
         height: "40px",
         width: "100%",
