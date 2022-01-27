@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import NavbarHeader from "components/molecules/NavbarHeader";
 import MenuItems from "./MenuItems";
-
 function Navbar() {
   return (
     <Box
