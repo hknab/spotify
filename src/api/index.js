@@ -69,6 +69,10 @@ const getMusics = async () => {
   const { data } = await client.get("/musics");
   return data;
 };
+const getMusic = async (id) => {
+  const { data } = await client.get(`/musics/${id}`);
+  return data;
+};
 
 export {
   getUser,
@@ -84,4 +88,5 @@ export {
   updateFolder,
   deleteFolder,
   getMusics,
+  getMusic,
 };
