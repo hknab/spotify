@@ -19,24 +19,24 @@ const updateUser = async (user) => {
   return data;
 };
 /* -----------------------PLAY LIST----------------------- */
-const getPlayLists = async () => {
-  const { data } = await client.get("/playLists");
+const getPlaylists = async () => {
+  const { data } = await client.get("/Playlists");
   return data;
 };
-const getPlayList = async (id) => {
-  const { data } = await client.get(`/playLists/${id}`);
+const getPlaylist = async (id) => {
+  const { data } = await client.get(`/Playlists/${id}`);
   return data;
 };
-const createPlayList = async (playList) => {
-  const { data } = await client.post("/playLists", playList);
+const createPlaylist = async (Playlist) => {
+  const { data } = await client.post("/Playlists", Playlist);
   return data;
 };
-const updatePlayList = async ({id , ...playList}) => {
-  const { data } = await client.put(`/playLists/${id}`, playList);
+const updatePlaylist = async ({id , ...Playlist}) => {
+  const { data } = await client.put(`/Playlists/${id}`, Playlist);
   return data;
 };
-const deletePlayList = async (id) => {
-  const { data } = await client.delete(`/playlists/${id}`);
+const deletePlaylist = async (id) => {
+  const { data } = await client.delete(`/Playlists/${id}`);
   return data;
 };
 
@@ -79,11 +79,11 @@ export {
   getUser,
   updateUser,
   editUser,
-  getPlayLists,
-  getPlayList,
-  createPlayList,
-  updatePlayList,
-  deletePlayList,
+  getPlaylists,
+  getPlaylist,
+  createPlaylist,
+  updatePlaylist,
+  deletePlaylist,
   getFolders,
   getFolder,
   createFolder,
