@@ -1,5 +1,10 @@
 import { getMusics, getMusic } from "api";
+import { useQuery} from "react-query";
 
-const useAllMusics = () => {};
-const useMusic = (id) => {};
-export { useAllMusics, useMusic };
+const useMusics = () => {
+    return useQuery("musics", getMusics);
+};
+const useMusic = (id) => {
+    return useQuery(['music', id], ()=> getMusic(id))
+};
+export { useMusics, useMusic };

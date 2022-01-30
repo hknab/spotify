@@ -4,6 +4,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import PlayerContext from "context/PlayerContext";
 import MainLayout from "layout/main";
 // import Molecules from "components/molecules/index";
+import {  QueryClientProvider , QueryClient} from "react-query";
+
+const queryClient = new QueryClient();
+
 
 const customizations = {
   mode: "dark",
@@ -12,6 +16,7 @@ const customizations = {
 
 function App() {
   return (
+      <QueryClientProvider client={queryClient}>
     <PlayerContext>
       <ThemeProvider theme={themeConfig(customizations)}>
         <CssBaseline />
@@ -19,6 +24,7 @@ function App() {
         {/* <Molecules /> */}
       </ThemeProvider>
     </PlayerContext>
+      </QueryClientProvider>
   );
 }
 

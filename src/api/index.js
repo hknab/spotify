@@ -10,10 +10,10 @@ const getUser = async () => {
   const { data } = await client.get("/user");
   return data;
 };
-// const editUser = async (data) => {
-//     const { data } = await client.put('/user',data)
-//     return DataTransferItem
-// }
+const editUser = async (user) => {
+    const { data } = await client.put('/user',user)
+    return data
+}
 const updateUser = async (user) => {
   const { data } = await client.patch(`/user`, user);
   return data;
@@ -31,7 +31,7 @@ const createPlayList = async (playList) => {
   const { data } = await client.post("/playLists", playList);
   return data;
 };
-const updatePlayList = async (id, playList) => {
+const updatePlayList = async ({id , ...playList}) => {
   const { data } = await client.put(`/playLists/${id}`, playList);
   return data;
 };
@@ -47,14 +47,15 @@ const getFolders = async () => {
   return data;
 };
 const getFolder = async (id) => {
+
   const { data } = await client.get(`/folders/${id}`);
   return data;
 };
 const createFolder = async (folder) => {
-  const { data } = await client.put("/folders", folder);
+  const { data } = await client.post("/folders", folder);
   return data;
 };
-const updateFolder = async (id, folder) => {
+const updateFolder = async ({ id, ...folder }) => {
   const { data } = await client.put(`/folders/${id}`, folder);
   return data;
 };
@@ -77,6 +78,7 @@ const getMusic = async (id) => {
 export {
   getUser,
   updateUser,
+  editUser,
   getPlayLists,
   getPlayList,
   createPlayList,
@@ -89,4 +91,5 @@ export {
   deleteFolder,
   getMusics,
   getMusic,
+
 };
