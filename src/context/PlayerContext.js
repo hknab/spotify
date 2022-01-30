@@ -4,7 +4,7 @@ const PlayerData = React.createContext();
 const PlayerSetData = React.createContext();
 
 const initialData = {
-  playList: [], //playing playList
+  Playlist: [], //playing Playlist
   item: null, // item index
   next: null, //next music item index
   before: null, //before music item index

@@ -1,4 +1,4 @@
-import {editUser, getUser, updateUser , getPlayList} from "api";
+import {editUser, getUser, updateUser , getPlaylist} from "api";
 import {useQueryClient, useQuery, useMutation, useQueries} from "react-query";
 import React from 'react'
 const useUser = () => {
@@ -22,24 +22,24 @@ const useEditUser = () => {
         }
     })
 }
-const useUserPlayLists =  ()=> {
-    const [playListsEnabled  ,setPlayListsEnabled] = React.useState(false)
+const useUserPlaylists =  ()=> {
+    const [PlaylistsEnabled  ,setPlaylistsEnabled] = React.useState(false)
     const {data} = useQuery('user', getUser , {
         onSuccess: () => {
-            setPlayListsEnabled(true)
+            setPlaylistsEnabled(true)
         },
-        placeholderData: {playLists:[]}
+        placeholderData: {Playlists:[]}
     })
-    return useQueries(data.playLists.map((id)=> {
+    return useQueries(data.Playlists.map((id)=> {
             return {
-                queryKey:['playList', id],
-                queryFn: () => getPlayList(id),
+                queryKey:['Playlist', id],
+                queryFn: () => getPlaylist(id),
 
             }
         }),{
-        enabled: playListsEnabled,
+        enabled: PlaylistsEnabled,
     } )
 
 
 }
-export { useUser, useUpdateUser , useEditUser , useUserPlayLists};
+export { useUser, useUpdateUser , useEditUser , useUserPlaylists};

@@ -1,53 +1,53 @@
 import {useQuery, useMutation , useQueryClient} from "react-query";
 import {
-  getPlayLists,
-  getPlayList,
-  createPlayList,
-  updatePlayList,
-  deletePlayList,
+  getPlaylists,
+  getPlaylist,
+  createPlaylist,
+  updatePlaylist,
+  deletePlaylist,
 } from "api";
 
-const usePlayLists = () => {
-  return useQuery('playLists', getPlayLists)
+const usePlaylists = () => {
+  return useQuery('Playlists', getPlaylists)
 };
-const usePlayList = (id) => {
-  return useQuery(['playList', id] , ()=> getPlayList(id) )
+const usePlaylist = (id) => {
+  return useQuery(['Playlist', id] , ()=> getPlaylist(id) )
 };
-const useCreatePlayList = () => {
+const useCreatePlaylist = () => {
   const queryClient = useQueryClient()
-  return useMutation(createPlayList , {
-    onSuccess: (playList) => {
-        queryClient.setQueryData('playLists',  oldData => [...oldData , playList]);
+  return useMutation(createPlaylist , {
+    onSuccess: (Playlist) => {
+        queryClient.setQueryData('Playlists',  oldData => [...oldData , Playlist]);
 
     }
   })
 };
-const useUpdatePlayList = () => {
+const useUpdatePlaylist = () => {
   const queryClient = useQueryClient()
-  return useMutation(updatePlayList , {
+  return useMutation(updatePlaylist , {
     onSuccess:  (res) => {
-       queryClient.invalidateQueries('playLists')
-      queryClient.setQueryData(['playList' ,res.id] ,  () => res)
+       queryClient.invalidateQueries('Playlists')
+      queryClient.setQueryData(['Playlist' ,res.id] ,  () => res)
 
    },
   })
 };
-const useDeletePlayList = () => {
+const useDeletePlaylist = () => {
   const queryClient = useQueryClient();
-  return useMutation(deletePlayList , {
+  return useMutation(deletePlaylist , {
     onSuccess: (res, id) => {
-      queryClient.setQueryData('playLists' , old => {
+      queryClient.setQueryData('Playlists' , old => {
         return old.filter(item => item !== id)
       })
-      queryClient.removeQueries(['playList' ,id])
+      queryClient.removeQueries(['Playlist' ,id])
     }
   })
 };
 
 export {
-  usePlayLists,
-  usePlayList,
-  useCreatePlayList,
-  useUpdatePlayList,
-  useDeletePlayList,
+  usePlaylists,
+  usePlaylist,
+  useCreatePlaylist,
+  useUpdatePlaylist,
+  useDeletePlaylist,
 };
