@@ -6,6 +6,7 @@ import MainLayout from "layout/main";
 import 'assets/scss/global.scss';
 // import Molecules from "components/molecules/index";
 import {  QueryClientProvider , QueryClient} from "react-query";
+import {ReactQueryDevtools} from "react-query/devtools";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
         <CssBaseline />
         <MainLayout />
         {/* <Molecules /> */}
+        <ReactQueryDevtools/>
       </ThemeProvider>
     </PlayerContext>
       </QueryClientProvider>

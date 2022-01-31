@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import MenuItemButton from "components/molecules/MenuItemButton";
 import Divider from "@mui/material/Divider";
 import { menuItems } from "navbar-items";
-
-function MenuItems() {
+import MenuItemIcon from 'components/molecules/MenuItemIcon'
+function MenuItems({open}) {
   const renderGroup = (item, index) => {
     return (
       <Box
@@ -29,7 +29,16 @@ function MenuItems() {
     );
   };
   const renderItems = (item, index) => {
-    return <MenuItemButton icon={item.Icon} text={item.text} key={index} />;
+      if(open){
+          return (
+              <MenuItemButton icon={item.Icon} text={item.text} key={index} />
+          )
+      }else {
+          return (
+              <MenuItemIcon icon={item.Icon}  key={index}/>
+          )
+      }
+     ;
   };
   return (
     <Box sx={{ marginTop: "40px", width: "100%" }}>
