@@ -3,6 +3,7 @@ import { themeConfig } from "themes";
 import CssBaseline from "@mui/material/CssBaseline";
 import PlayerContext from "context/PlayerContext";
 import MainLayout from "layout/main";
+import 'assets/scss/global.scss';
 // import Molecules from "components/molecules/index";
 import {  QueryClientProvider , QueryClient} from "react-query";
 

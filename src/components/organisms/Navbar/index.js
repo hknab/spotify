@@ -10,8 +10,7 @@ function Navbar() {
         width: "256px",
         height: "100%",
         padding: "32px 31px 32px 31px",
-          overflowY:"auto"
-
+          overflowY: 'auto',
       }}
     >
       <Box

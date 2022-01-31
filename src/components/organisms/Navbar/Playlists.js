@@ -32,9 +32,7 @@ function Playlists () {
                 <ListsIcon/>
             </Box>
         </Box>
-
             {renderList}
-
         </>
     )
 }
