@@ -14,13 +14,14 @@ function NavbarBody () {
     }
 return  (
     <Box
+        className="scrollbar"
         sx={{
             backgroundColor: "secondary.1",
             width: open? "256px" : "97px",
             height: "100%",
             padding: "32px 31px 32px 31px",
             px: open ? "none" : '17px',
-            overflowY: 'auto',
+            overflowY: 'overlay',
             overflowX: "hidden",
             transition:"all .3s ease-out"
         }}

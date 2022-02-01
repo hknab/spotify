@@ -75,6 +75,12 @@ const getMusic = async (id) => {
   return data;
 };
 
+/* -----------------------ACTIVITY----------------------- */
+const getActivities = async () => {
+  const {data} = await client.get('/activities')
+  return data
+}
+
 export {
   getUser,
   updateUser,
@@ -91,5 +97,5 @@ export {
   deleteFolder,
   getMusics,
   getMusic,
-
+  getActivities,
 };

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import Activity from "./Activity";
+import ActivityLayout from "./Activity";
 import Content from "./Content";
-import Navbar from "./Navbar";
+import NavbarLayout from "./Navbar";
 import Player from "./Player";
 function MainLayout() {
   return (
@@ -15,16 +15,17 @@ function MainLayout() {
         gridTemplateAreas: '"nav content activity" "play play play"',
         height: "100vh",
         width: "100%",
+          overflow:"hidden"
       }}
     >
       <Box sx={{ gridArea: "nav" }}>
-        <Navbar />
+        <NavbarLayout />
       </Box>
       <Box sx={{ gridArea: "content" }}>
         <Content />
       </Box>
       <Box sx={{ gridArea: "activity" }}>
-        <Activity />
+        <ActivityLayout />
       </Box>
       <Box sx={{ gridArea: "play" }}>
         <Player />

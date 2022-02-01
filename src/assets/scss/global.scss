@@ -1,21 +1,47 @@
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #777777;
-  resize: horizontal;
-}
+.scrollbar {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #535353;
-  border-radius: 4px;
-}
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0);
+    border-radius: 4px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0);
+  }
+
+  &:hover{
+  /* width */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #777777;
+    resize: horizontal;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #535353;
+    border-radius: 4px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
 }

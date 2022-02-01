@@ -9,45 +9,48 @@ import { ReactComponent as MusicIcon } from "assets/icons/music-empty.svg";
 
 //fake data
 import ActivityAvatar from "fake-data/activity-avatar.jpg";
-const data = {
-  avatar: ActivityAvatar,
-  title: "Jane Flores",
-  time: "1 hr",
-  track: ["Love Illumination", "Franz Ferninard"],
-  description: {
-    type: "song", // user , song , disc
-    text: "The Right Thoughts,Right Wo...",
-  },
-};
-function Activity() {
+// const data = {
+//   avatar: ActivityAvatar,
+//   title: "Jane Flores",
+//   time: "1 hr",
+//   track: ["Love Illumination", "Franz Ferninard"],
+//   description: {
+//     type: "song", // user , song , disc
+//     text: "The Right Thoughts,Right Wo...",
+//   },
+// };
+function Activity({data}) {
+    console.log(data)
   return (
     <Box
       sx={{
         display: "flex",
-        width: "221px",
+          width:"100%",
+        maxWidth: "221px",
         height: "56px",
         alignItems: "center",
-        justifyContent: "space-evenly",
-        padding: "10px 8px",
-        cursor: "pointer",
+        padding: "6px 8px",
         "&:hover": { backgroundColor: "secondary.3" },
         // backgroundColor: "neutral.3",
+
       }}
     >
       <Avatar
-        src={data.avatar}
+          src={data.avatar}
         sx={{
           width: "36px",
           height: "36px",
-          border: "1px solid",
-          borderColor: "other.yellow",
+            marginRight:"8px",
+            cursor:"pointer"
         }}
       />
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "space-evenly",
+          justifyContent: "space-evenly",
+            width:"100%",
+            cursor:"pointer"
         }}
       >
         <Box item sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -63,11 +66,10 @@ function Activity() {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
           }}
         >
           <Typography variant="body3">{data.track[0]}</Typography>
-          <DotIcon />
+            {data.track[1] && <DotIcon/>}
           <Typography variant="body3">{data.track[1]}</Typography>
         </Box>
         <Box

@@ -1,11 +1,13 @@
 import Box from "@mui/material/Box";
-
-function Activity() {
+import Activity from 'components/organisms/Activity'
+function ActivityLayout() {
   return (
     <Box
-      sx={{ backgroundColor: "secondary.1", width: "242px", height: "100%" , heigth:"calc(100vh - 96px)"}}
-    ></Box>
+      sx={{ height:"calc(100vh - 96px)"}}
+    >
+      <Activity/>
+    </Box>
   );
 }
 
-export default Activity;
+export default ActivityLayout;
