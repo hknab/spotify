@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import React from "react";
-
-function Player() {
-  return <Box sx={{ backgroundColor: "secondary.1", height: "96px" }}></Box>;
+import Plauer from 'components/organisms/Player';
+function PlayerLayout() {
+  return <Box sx={{ backgroundColor: "secondary.1", height: "96px" }}><Plauer/></Box>;
 }
 
-export default Player;
+export default PlayerLayout;

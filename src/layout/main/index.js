@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import ActivityLayout from "./Activity";
 import Content from "./Content";
 import NavbarLayout from "./Navbar";
-import Player from "./Player";
+import PlayerLayout from "./Player";
 function MainLayout() {
   return (
     <Box
@@ -28,7 +28,7 @@ function MainLayout() {
         <ActivityLayout />
       </Box>
       <Box sx={{ gridArea: "play" }}>
-        <Player />
+        <PlayerLayout />
       </Box>
     </Box>
   );
