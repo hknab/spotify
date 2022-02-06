@@ -8,6 +8,7 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import { ReactComponent as ExpandLess } from "assets/icons/ExpandLess.svg";
 import { ReactComponent as ExpandMore } from "assets/icons/ExpandMore.svg";
+import PlaylistSkeleton from "skeletons/PlaylistSkeleton";
 
 
 
@@ -73,7 +74,7 @@ function MenuCollapseItem() {
   }
 
   if (isLoading) return (
-      <h1>Loading...</h1>
+      <PlaylistSkeleton/>
   )
 
   return (

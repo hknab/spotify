@@ -5,7 +5,7 @@ import {ReactComponent as DotsIcon} from "assets/icons/dots.svg";
 import {ReactComponent as FolderIcon} from "assets/icons/folderSimple.svg";
 import {ReactComponent as ListsIcon} from "assets/icons/listBullets.svg";
 import MenuCollapseItem from "components/molecules/MenuCollapseItem";
-import MenuItemPlaylist from "../../molecules/MenuItemPlaylist";
+import MenuItemPlaylist from "components/molecules/MenuItemPlaylist";
 function Playlists () {
     const [openList , setOpenList] = React.useState('folder')
 
@@ -32,7 +32,7 @@ function Playlists () {
                 <ListsIcon/>
             </Box>
         </Box>
-            {renderList}
+                {renderList}
         </>
     )
 }
