@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import TimeLine from "./player/TimeLine";
-import { usePlayerState } from "context/PlayerContext";
+// import TimeLine from "./player/TimeLine";
 // // test
 // import { ReactComponent as LikeFillIcon } from "assets/icons/like-fill.svg";
 // import { ReactComponent as MusicFillIcon } from "assets/icons/music-fill.svg";
@@ -10,7 +9,6 @@ import { usePlayerState } from "context/PlayerContext";
 // import gradient from "util/gradient";
 
 function Molecules() {
-  const context = usePlayerState();
   return (
     <Box
       sx={{
@@ -27,7 +25,6 @@ function Molecules() {
         },
       }}
     >
-      <TimeLine />
     </Box>
   );
 }

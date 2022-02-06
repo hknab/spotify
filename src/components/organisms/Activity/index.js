@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import ActivityContext from "./ActivityContext";
+import ActivityContext from "context/ActivityContext";
 import ActivityBody from "./ActivityBody";
 //TODO: refactor context directory
 

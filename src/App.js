@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { themeConfig } from "themes";
 import CssBaseline from "@mui/material/CssBaseline";
-import PlayerContext from "context/PlayerContext";
 import MainLayout from "layout/main";
 import 'assets/scss/global.scss';
 // import Molecules from "components/molecules/index";
@@ -19,14 +18,12 @@ const customizations = {
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
-    <PlayerContext>
       <ThemeProvider theme={themeConfig(customizations)}>
         <CssBaseline />
         <MainLayout />
         {/* <Molecules /> */}
         <ReactQueryDevtools/>
       </ThemeProvider>
-    </PlayerContext>
       </QueryClientProvider>
   );
 }

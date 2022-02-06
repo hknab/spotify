@@ -1,16 +1,16 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { usePlayerActions } from "context/PlayerContext";
+import {useControlActions} from 'context/ControlContext'
 function Volume() {
   const [value, setValue] = React.useState(50);
-  const { setVolume } = usePlayerActions();
+  const { setVolume } = useControlActions();
 
   const handleChange = (e) => {
     setValue(parseInt(e.target.value));
   };
-  const handleChangeCommitted = (e) => {
-    setVolume(parseInt(e.target.value));
+  const handleChangeCommitted = () => {
+    setVolume(value);
   };
   return (
     <Box

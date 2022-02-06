@@ -3,8 +3,7 @@ import Typography from "@mui/material/Typography";
 import {ReactComponent as FriendsIcon} from 'assets/icons/friend-empty.svg'
 import {ReactComponent as ArrowRightIcon} from "assets/icons/arrowRIght.svg";
 import {ReactComponent as ArrowLeftIcon} from "assets/icons/arrowLeft.svg";
-import {useActivityActions} from "./ActivityContext";
-import {useActivityState} from "./ActivityContext";
+import {useActivityState , useActivityActions} from "context/ActivityContext";
 
 function Header (){
     const {setActivityClose , setActivityOpen} = useActivityActions();

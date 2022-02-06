@@ -1,13 +1,42 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Volume from "./Volume";
+import Slider from "@mui/material/Slider";
 import { ReactComponent as IdentificationIcon } from "assets/icons/identification-card.svg";
 import { ReactComponent as LyricsIcon } from "assets/icons/lyrics.svg";
 import { ReactComponent as DiscIcon } from "assets/icons/disc.svg";
 import { ReactComponent as SpeakerIcon } from "assets/icons/speaker.svg";
 import { ReactComponent as FullScreenIcon } from "assets/icons/full-screen.svg";
+import { ReactComponent as SpeakerMuteIcon } from "assets/icons/speaker-mute.svg";
+import {useControlActions} from "context/ControlContext";
+import {usePlayerActions} from "context/PlayerContext";
 
 function Adjust() {
+    const [mute , setMute ] = React.useState(false);
+    const [value, setValue] = React.useState(50);
+
+    const {setVolume} = useControlActions()
+    const {toggleFullscreen} = usePlayerActions()
+    const handleChangeSpeaker = () => {
+        if(mute){
+            setValue(50)
+            setVolume(50)
+            setMute(false)
+        }else {
+            setVolume(0)
+            setValue(0)
+            setMute(true)
+        }
+    }
+    const handleChange = (e) => {
+        setValue(parseInt(e.target.value));
+    };
+    const handleChangeCommitted = () => {
+        setVolume(value);
+        value === 0 ? setMute(true) : setMute(false)
+    };
+    const handleClickFullscreen = ()=>{
+        toggleFullscreen()
+    }
   return (
     <Box
       display="flex"
@@ -55,10 +84,36 @@ function Adjust() {
           <DiscIcon />
         </Box>
         <Box>
-          <SpeakerIcon />
+            <Box onClick={handleChangeSpeaker}>
+                {mute? <SpeakerMuteIcon/> : <SpeakerIcon/>}
+            </Box>
         </Box>
-        <Volume />
-        <Box>
+          <Box
+              sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "72px",
+              }}
+          >
+              <Slider
+                  aria-label="Volume"
+                  value={value}
+                  onChange={handleChange}
+                  onChangeCommitted={handleChangeCommitted}
+                  size="small"
+                  sx={{
+                      height: "4px",
+                      "& .MuiSlider-thumb": {
+                          display: "none",
+                      },
+                      "& .MuiSlider-rail": {
+                          backgroundColor: "neutral.2",
+                      },
+                      "& .MuiSlider-track ": { backgroundColor: "neutral.1" },
+                  }}
+              />
+          </Box>
+        <Box onClick={handleClickFullscreen}>
           <FullScreenIcon />
         </Box>
       </Box>

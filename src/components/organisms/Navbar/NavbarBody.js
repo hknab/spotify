@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import NavbarHeader from "components/molecules/NavbarHeader";
 import MenuItems from "./MenuItems";
 import Playlists from './Playlists'
-import {useNavbarState , useNavbarActions} from "./NavbarContext";
+import {useNavbarState , useNavbarActions} from "context/NavbarContext";
 
 function NavbarBody () {
     const {setNavbarOpen , setNavbarClose} = useNavbarActions()
@@ -21,7 +21,6 @@ return  (
             height: "100%",
             padding: "32px 31px 32px 31px",
             px: open ? "none" : '17px',
-            overflowY: 'overlay',
             overflowX: "hidden",
             transition:"all .3s ease-out"
         }}

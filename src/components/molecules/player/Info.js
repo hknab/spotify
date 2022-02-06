@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { ReactComponent as LikeIcon } from "assets/icons/like-fill.svg";
 import { ReactComponent as ListIcon } from "assets/icons/list-empty.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus-empty.svg";
-
+import {usePlayerState} from "context/PlayerContext";
 //fake data
 import cover from "fake-data/cover.jpg";
 const data = {
@@ -13,12 +13,16 @@ const data = {
   subTitle: "Queens of the Stone Age",
 };
 function Info() {
+   const {itemIndex , playlist} = usePlayerState()
+    const data = playlist.length? playlist[itemIndex] : null;
+
+    if(!data) return <h5>info...</h5>
   return (
     <Box sx={{ width: "243px", height: "48px", display: "flex" }}>
       <Box
-        sx={{ height: "100%", "& > img": { height: "100%", width: "auto" } }}
+        sx={{ height: "100%" , width: "48px", "& > img": { height: "48px", width: "auto" } }}
       >
-        <img src={cover} alt=""></img>
+        <img src={`http://localhost:4000${data.cover}`} alt=""></img>
       </Box>
       <Box
         sx={{
@@ -37,7 +41,7 @@ function Info() {
       >
         <Typography variant="body2">{data.title}</Typography>
         <Typography variant="body3" color="neutral.1">
-          {data.subTitle}
+          {data.subTitle || null}
         </Typography>
       </Box>
       <Box

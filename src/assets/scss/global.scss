@@ -1,5 +1,6 @@
 
 .scrollbar {
+
   /* width */
   &::-webkit-scrollbar {
     width: 5px;
@@ -8,6 +9,7 @@
   /* Track */
   &::-webkit-scrollbar-track {
     background: rgba(0,0,0,0);
+
   }
 
   /* Handle */
@@ -30,7 +32,6 @@
   /* Track */
   &::-webkit-scrollbar-track {
     background: #777777;
-    resize: horizontal;
   }
 
   /* Handle */
@@ -44,4 +45,23 @@
     background: #555;
   }
 }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+and (min-resolution:.001dpcm) {
+  .scrollbar{
+    overflow: overlay;
+  }
+}
+@supports (-moz-appearance:none) {
+  .scrollbar {
+
+    width: 5px;
+    overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+    &:hover {
+      scrollbar-color:  #777777  #535353;
+
+    }
+  }
 }

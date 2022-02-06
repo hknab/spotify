@@ -7,13 +7,23 @@ import { ReactComponent as RepeatIcon } from "assets/icons/repeat.svg";
 import { ReactComponent as ShuffleIcon } from "assets/icons/shuffle.svg";
 import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
 import { usePlayerActions, usePlayerState } from "context/PlayerContext";
+import {useControlActions , useControlState} from "context/ControlContext";
 
 function Controls() {
-  const { shuffle, play, repeat } = usePlayerState();
-  const { setShuffle, setPlay, setRepeat } = usePlayerActions();
+  const { shuffle, repeat } = usePlayerState();
+  const { setShuffle, setRepeat, getNext , getPrevious } = usePlayerActions();
+  const {setPlay} = useControlActions()
+    const {play} = useControlState()
+  //TODO: set shuffle and set Repeat functionality
   const handleClickShuffle = () => setShuffle();
   const handleClickPlay = () => setPlay();
   const handleClickRepeat = () => setRepeat();
+  const handleClickNext= ()=>{
+    getNext()
+  }
+  const handleClickPrevious = ()=>{
+      getPrevious()
+  }
   return (
     <Box
       sx={{
@@ -23,7 +33,6 @@ function Controls() {
         alignItems: "center",
         justifyContent: "space-between",
         "& > *": {
-          cursor: "pointer",
           "&:active": {
             transform: "scale(.95)",
           },
@@ -33,7 +42,7 @@ function Controls() {
       <Box width="16px" height="16px" onClick={handleClickShuffle}>
         <ShuffleIcon fill={shuffle ? "#1DB954" : "#B3B3B3"} />
       </Box>
-      <Box width="16px" height="16px">
+      <Box width="16px" height="16px" onClick={getPrevious}>
         <PlayLeftIcon />
       </Box>
       <Box
@@ -46,17 +55,18 @@ function Controls() {
         onClick={handleClickPlay}
       >
         {play ? (
-          <PlayIcon
+            <RowsIcon width="13px" height="13px" fill="#191414" style={{transform:"rotate(90deg)"}} />
+
+        ) : (
+            <PlayIcon
             width="9.19px"
             height="10.5px"
             fill="#191414"
             style={{ marginLeft: "10.5px", marginRight: "8.31px" }}
-          />
-        ) : (
-          <RowsIcon width="13px" height="13px" fill="#191414" style={{}} />
+            />
         )}
       </Box>
-      <Box width="16px" height="16px">
+      <Box width="16px" height="16px" onClick={getNext}>
         <PlayRightIcon />
       </Box>
       <Box

@@ -20,7 +20,6 @@ import ActivityAvatar from "fake-data/activity-avatar.jpg";
 //   },
 // };
 function Activity({data}) {
-    console.log(data)
   return (
     <Box
       sx={{
@@ -76,7 +75,7 @@ function Activity({data}) {
           sx={{
             display: "flex",
             alignItems: "center",
-            "& > *:first-child": { marginRight: "5px" },
+            "& > *": { marginRight: "5px" },
           }}
         >
           {data.description.type === "user" && (

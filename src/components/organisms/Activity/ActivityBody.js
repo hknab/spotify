@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Header from './Header'
 import List from './List'
-import {useActivityState} from "./ActivityContext";
+import {useActivityState} from "context/ActivityContext";
 function ActivityBody(){
     const {open}= useActivityState()
     return (

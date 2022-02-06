@@ -5,9 +5,9 @@ import Activity from "components/molecules/Activity";
 function List () {
     const {data : activities , isLoading : activitiesLoading} = useActivities({refetchOnMount:false});
     if(activitiesLoading) return (<h1>Loading...</h1>)
-    return (<Box className={"scrollbar"} sx={{ overflow:"overlay",padding:"10px 0"}}>
+    return (<Box className={"scrollbar"} sx={{ padding:"10px 0", width:"100%"}}>
         {activities.map((activity , index)=>(
-            <Activity key={index} data={{...activity, avatar: `http://localhost:3000${activity.avatar}`}}/>
+            <Activity key={index} data={{...activity, avatar: `http://localhost:4000${activity.avatar}`}}/>
         ))}
     </Box>)
 }

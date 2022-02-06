@@ -5,7 +5,7 @@ const ContextState = createContext();
 const ContextSetState = createContext()
 
 const initialState = {
-    open: true,
+    open: false,
 }
 
 function ActivityContext ({children}) {
