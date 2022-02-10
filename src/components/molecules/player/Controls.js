@@ -7,23 +7,35 @@ import { ReactComponent as RepeatIcon } from "assets/icons/repeat.svg";
 import { ReactComponent as ShuffleIcon } from "assets/icons/shuffle.svg";
 import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
 import { usePlayerActions, usePlayerState } from "context/PlayerContext";
-import {useControlActions , useControlState} from "context/ControlContext";
 
 function Controls() {
-  const { shuffle, repeat } = usePlayerState();
-  const { setShuffle, setRepeat, getNext , getPrevious } = usePlayerActions();
-  const {setPlay} = useControlActions()
-    const {play} = useControlState()
+  const { shuffle, repeat, play } = usePlayerState();
+  const { setShuffle, setRepeat, getNext, getPrevious, togglePlay } =
+    usePlayerActions();
+  const [isNavigateActive, setIsNavigateActive] = React.useState(true);
   //TODO: set shuffle and set Repeat functionality
   const handleClickShuffle = () => setShuffle();
-  const handleClickPlay = () => setPlay();
+  const handleClickPlay = () => togglePlay();
   const handleClickRepeat = () => setRepeat();
-  const handleClickNext= ()=>{
-    getNext()
-  }
-  const handleClickPrevious = ()=>{
-      getPrevious()
-  }
+
+  const handleNavigateActive = () => {
+    setIsNavigateActive(false);
+    setTimeout(() => {
+      setIsNavigateActive(true);
+    }, 999);
+  };
+  const handleClickNext = () => {
+    if (isNavigateActive) {
+      getNext();
+      handleNavigateActive();
+    }
+  };
+  const handleClickPrevious = () => {
+    if (isNavigateActive) {
+      getPrevious();
+      handleNavigateActive();
+    }
+  };
   return (
     <Box
       sx={{
@@ -42,7 +54,7 @@ function Controls() {
       <Box width="16px" height="16px" onClick={handleClickShuffle}>
         <ShuffleIcon fill={shuffle ? "#1DB954" : "#B3B3B3"} />
       </Box>
-      <Box width="16px" height="16px" onClick={getPrevious}>
+      <Box width="16px" height="16px" onClick={handleClickPrevious}>
         <PlayLeftIcon />
       </Box>
       <Box
@@ -55,18 +67,22 @@ function Controls() {
         onClick={handleClickPlay}
       >
         {play ? (
-            <RowsIcon width="13px" height="13px" fill="#191414" style={{transform:"rotate(90deg)"}} />
-
+          <RowsIcon
+            width="13px"
+            height="13px"
+            fill="#191414"
+            style={{ transform: "rotate(90deg)" }}
+          />
         ) : (
-            <PlayIcon
+          <PlayIcon
             width="9.19px"
             height="10.5px"
             fill="#191414"
             style={{ marginLeft: "10.5px", marginRight: "8.31px" }}
-            />
+          />
         )}
       </Box>
-      <Box width="16px" height="16px" onClick={getNext}>
+      <Box width="16px" height="16px" onClick={handleClickNext}>
         <PlayRightIcon />
       </Box>
       <Box

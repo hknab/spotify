@@ -8,12 +8,12 @@ function HeaderIconButton(props) {
   return (
     <Box
       sx={{
-        width: "316px",
+        minWidth: "min-content",
+        flexGrow: 1,
         height: "64px",
         borderRadius: "77px",
         display: "flex",
         alignItems: "center",
-        minWidth: "max-content",
         backgroundColor: "rgba(255, 255, 255, 0.1)",
         cursor: "pointer",
         transition: "background-color .3s ease-out",

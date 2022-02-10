@@ -1,4 +1,4 @@
-import {useQuery, useMutation , useQueryClient} from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
   getPlaylists,
   getPlaylist,
@@ -8,40 +8,45 @@ import {
 } from "api";
 
 const usePlaylists = () => {
-  return useQuery('Playlists', getPlaylists)
+  return useQuery("playlists", getPlaylists, {});
 };
 const usePlaylist = (id) => {
-  return useQuery(['Playlist', id] , ()=> getPlaylist(id) )
+  return useQuery(["playlist", id], () => getPlaylist(id), {
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+  });
 };
 const useCreatePlaylist = () => {
-  const queryClient = useQueryClient()
-  return useMutation(createPlaylist , {
+  const queryClient = useQueryClient();
+  return useMutation(createPlaylist, {
     onSuccess: (Playlist) => {
-        queryClient.setQueryData('Playlists',  oldData => [...oldData , Playlist]);
-
-    }
-  })
+      queryClient.setQueryData("playlists", (oldData) => [
+        ...oldData,
+        Playlist,
+      ]);
+    },
+  });
 };
 const useUpdatePlaylist = () => {
-  const queryClient = useQueryClient()
-  return useMutation(updatePlaylist , {
-    onSuccess:  (res) => {
-       queryClient.invalidateQueries('Playlists')
-      queryClient.setQueryData(['Playlist' ,res.id] ,  () => res)
-
-   },
-  })
+  const queryClient = useQueryClient();
+  return useMutation(updatePlaylist, {
+    onSuccess: (res) => {
+      queryClient.invalidateQueries("playlists");
+      queryClient.setQueryData(["playlist", res.id], () => res);
+    },
+  });
 };
 const useDeletePlaylist = () => {
   const queryClient = useQueryClient();
-  return useMutation(deletePlaylist , {
+  return useMutation(deletePlaylist, {
     onSuccess: (res, id) => {
-      queryClient.setQueryData('Playlists' , old => {
-        return old.filter(item => item !== id)
-      })
-      queryClient.removeQueries(['Playlist' ,id])
-    }
-  })
+      queryClient.setQueryData("playlists", (old) => {
+        return old.filter((item) => item !== id);
+      });
+      queryClient.removeQueries(["playlist", id]);
+    },
+  });
 };
 
 export {

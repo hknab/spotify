@@ -3,26 +3,28 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 //fake data
-import UserAvatar from "fake-data/user-avatar.jpg";
-const userName = "Kıvılcım";
-const userAvatar = UserAvatar;
+import { useUser } from "hooks/user";
+import UserAvatarSkeleton from "skeletons/UserAvatarSkeleton";
 
 function ProfileAvatar() {
+  const { data: user, isLoading: userIsLoading } = useUser();
+  if (userIsLoading) return <UserAvatarSkeleton />;
+  const { name, avatar } = user;
   return (
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
         width: "113px",
         height: "46px",
         padding: " 4px 16px 4px 8px",
         backgroundColor: "secondary.3",
         borderRadius: "80px",
+        userSelect: "none",
       }}
     >
       <Avatar
-        src={userAvatar}
+        src={`http://localhost:4000${avatar}`}
         sx={{
           width: "36px",
           height: "36px",
@@ -30,7 +32,9 @@ function ProfileAvatar() {
           borderColor: "primary.main",
         }}
       />
-      <Typography variant="body2">{userName}</Typography>
+      <Typography variant="body2" sx={{ marginLeft: "8px" }}>
+        {name}
+      </Typography>
     </Box>
   );
 }

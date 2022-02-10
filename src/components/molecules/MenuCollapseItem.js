@@ -73,7 +73,7 @@ function MenuCollapseItem() {
     }
   }
 
-  if (isLoading) return (
+  if (isLoading || !data) return (
       <PlaylistSkeleton/>
   )
 

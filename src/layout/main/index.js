@@ -1,9 +1,11 @@
 import Box from "@mui/material/Box";
 import ActivityLayout from "./Activity";
-import Content from "./Content";
 import NavbarLayout from "./Navbar";
 import PlayerLayout from "./Player";
-function MainLayout() {
+import Content from './Content'
+import {Outlet} from 'react-router-dom'
+
+function MainLayout({children}) {
   return (
     <Box
       sx={{
@@ -22,7 +24,9 @@ function MainLayout() {
         <NavbarLayout />
       </Box>
       <Box sx={{ gridArea: "content" }}>
-        <Content />
+          <Content >
+              <Outlet/>
+          </Content>
       </Box>
       <Box sx={{ gridArea: "activity" }}>
         <ActivityLayout />

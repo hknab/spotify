@@ -17,6 +17,7 @@ function NotificationButton() {
           backgroundColor: "secondary.3",
           width: "46px",
           height: "46px",
+          cursor: "auto",
           "&:hover": {
             backgroundColor: "secondary.2",
           },
