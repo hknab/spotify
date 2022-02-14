@@ -8,12 +8,19 @@ import { ReactComponent as LikeEmptyIcon } from "assets/icons/like-empty.svg";
 import { ReactComponent as LikeFillIcon } from "assets/icons/like-fill.svg";
 import { ReactComponent as LikeIcon } from "assets/icons/like.svg";
 import { ReactComponent as UnlikeIcon } from "assets/icons/unlike.svg";
+import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
+import { usePlayerActions } from "context/PlayerContext";
+import { useParams } from "react-router-dom";
+import { usePlaylist } from "hooks/playlist";
 //fake-data
-import SongArtistCover from "fake-data/song-artist.jpg";
+
 import userAvatar from "fake-data/user-avatar.jpg";
-function SongArtist() {
+function SongArtist({ item, index, playingMusic, play, playlist }) {
+  const { id } = useParams();
+  const { data } = usePlaylist(id);
   const [like, setLike] = React.useState(false);
   const [hover, setHover] = React.useState();
+  const { togglePlay, setPlayerMusic } = usePlayerActions();
   const handleLike = () => {
     setLike((prev) => !prev);
   };
@@ -23,6 +30,48 @@ function SongArtist() {
   const handleMouseOut = () => {
     setHover(false);
   };
+  const handleTogglePlay = () => {
+    togglePlay();
+  };
+  const handleClickSetMusic = () => {
+    setPlayerMusic(data, item.id);
+  };
+  const playPauseButton = () => {
+    if (playingMusic.id === item.id) {
+      if (play) {
+        return (
+          <IconButton onClick={handleTogglePlay} color="primary">
+            <RowsIcon
+              width="13px"
+              height="13px"
+              fill="white"
+              style={{ transform: "rotate(90deg)" }}
+            />
+          </IconButton>
+        );
+      } else {
+        return (
+          <IconButton onClick={handleTogglePlay} color="primary">
+            <PlayIcon width="12px" height="15px" />
+          </IconButton>
+        );
+      }
+    } else {
+      if (hover)
+        return (
+          <IconButton onClick={handleClickSetMusic} color="primary">
+            <PlayIcon width="12px" height="15px" />
+          </IconButton>
+        );
+      else
+        return (
+          <Typography variant="body1" color="neutral.1">
+            {index + 1}
+          </Typography>
+        );
+    }
+  };
+
   return (
     <Box
       onMouseOver={handleMouseOver}
@@ -31,19 +80,18 @@ function SongArtist() {
         display: "grid",
         gridTemplateRows: "1fr",
         gridTemplateColumns: `
-             minmax(max-content , 285px) 
-             minmax(max-content , 190px)
-             minmax(max-content , 65px)
-            minmax(max-content , 100px)
-            minmax(max-content , 160px)
-            minmax(max-content , 80px)`,
+            minmax(max-content , 2.85fr)
+            minmax(max-content , 1.9fr)
+            minmax(max-content , .65fr)
+            minmax(max-content , 1fr)
+            minmax(max-content , 1.6fr)
+            minmax(max-content , .8fr)`,
         columnGap: "24px",
         alignItems: "center",
-        maxWidth: "1004px",
+        width: "100%",
 
         height: "48px",
         borderRadius: "8px",
-        cursor: "pointer",
         transition: "background-color .3s ease-out",
         userSelect: "none",
         padding: "0 8px",
@@ -69,28 +117,11 @@ function SongArtist() {
             justifyContent: "center",
           }}
         >
-          {hover ? (
-            <IconButton
-              color="secondary"
-              sx={{
-                backgroundColor: "primary.main",
-                width: "100%",
-                height: "100%",
-                padding: "0",
-                "&:hover": { backgroundColor: "primary.dark" },
-              }}
-            >
-              <PlayIcon width="5.25" height="6" />
-            </IconButton>
-          ) : (
-            <Typography variant="body1" color="neutral.1">
-              15
-            </Typography>
-          )}
+          {playPauseButton()}
         </Box>
 
         <img
-          src={SongArtistCover}
+          src={`http://localhost:4000${item.cover}`}
           alt=""
           style={{ height: "48px", borderRadius: "2px" }}
         ></img>
@@ -103,24 +134,32 @@ function SongArtist() {
             padding: "5px 0",
           }}
         >
-          <Typography variant="h4">Friday I’m In Love</Typography>
+          <Typography variant="h4">{item.title}</Typography>
           <Typography variant="body2" color="neutral.1">
-            Starsailor
+            {item.description}
           </Typography>
         </Box>
       </Box>
       <Box
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Typography variant="body2" color="neutral.1">
-          Brain Drain
+          {item.album}
         </Typography>
       </Box>
       <Box
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Typography variant="body2" color="neutral.1">
-          2 day ago
+          {item.date}
         </Typography>
       </Box>
       <Box
@@ -131,10 +170,10 @@ function SongArtist() {
         }}
       >
         <Box sx={{ width: "16px", height: "16px" }}>
-          <LikeIcon width="inherit" height="inherit" stroke="#B3B3B3" s />
+          <LikeIcon width="100%" height="100%" stroke="#B3B3B3" />
         </Box>
         <Box sx={{ width: "16px", height: "16px" }}>
-          <UnlikeIcon width="inherit" height="inherit" stroke="#B3B3B3" s />
+          <UnlikeIcon width="100%" height="100%" stroke="#B3B3B3" />
         </Box>
       </Box>
       <Box
@@ -155,7 +194,7 @@ function SongArtist() {
           }}
         ></Avatar>
         <Typography variant="body2" color="neutral.1" ml="10px">
-          Jane Flores
+          {item.artist}
         </Typography>
       </Box>
       <Box
@@ -181,7 +220,7 @@ function SongArtist() {
           )}
         </Box>
         <Typography variant="body1" color="neutral.1">
-          03:17
+          {item.length}
         </Typography>
       </Box>
     </Box>

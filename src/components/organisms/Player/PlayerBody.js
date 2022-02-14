@@ -9,21 +9,22 @@ import Fullscreen from "./Fullscreen";
 import PlayerSkeleton from "skeletons/PlayerSkeleton";
 import { usePlayerActions, usePlayerState } from "context/PlayerContext";
 import { useMusics, useMusicQueries } from "hooks/music";
+import { usePlaylist } from "hooks/playlist";
 import { useUpdateUser, useUser } from "hooks/user";
 import { useControlState, useControlSetState } from "context/ControlContext";
 
 function PlayerBody() {
-  const { data, isLoading } = useMusics();
-  const { setPlaylistOrMusic } = usePlayerActions();
-  const { playlist } = usePlayerState();
+  const { data, isLoading } = usePlaylist(1);
+  const { setPlayerPlaylist } = usePlayerActions();
+  const { playlist, playingMusic } = usePlayerState();
 
   React.useEffect(() => {
     if (!isLoading) {
-      setPlaylistOrMusic(data, 19);
+      setPlayerPlaylist(data, false);
     }
   }, [data]);
 
-  if (!playlist.length) return <PlayerSkeleton />;
+  if (!playingMusic.id) return <PlayerSkeleton />;
   return (
     <>
       <Audio />

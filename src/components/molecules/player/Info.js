@@ -4,23 +4,21 @@ import Typography from "@mui/material/Typography";
 import { ReactComponent as LikeIcon } from "assets/icons/like-fill.svg";
 import { ReactComponent as ListIcon } from "assets/icons/list-empty.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus-empty.svg";
-import {usePlayerState} from "context/PlayerContext";
-//fake data
-import cover from "fake-data/cover.jpg";
-const data = {
-  cover,
-  title: "No One Knows",
-  subTitle: "Queens of the Stone Age",
-};
-function Info() {
-   const {itemIndex , playlist} = usePlayerState()
-    const data = playlist.length? playlist[itemIndex] : null;
+import { usePlayerState } from "context/PlayerContext";
 
-    if(!data) return <h5>info...</h5>
+function Info() {
+  const { playingMusic } = usePlayerState();
+  const data = playingMusic;
+
+  if (!data) return <h5>info...</h5>;
   return (
     <Box sx={{ width: "243px", height: "48px", display: "flex" }}>
       <Box
-        sx={{ height: "100%" , width: "48px", "& > img": { height: "48px", width: "auto" } }}
+        sx={{
+          height: "100%",
+          width: "48px",
+          "& > img": { height: "48px", width: "auto" },
+        }}
       >
         <img src={`http://localhost:4000${data.cover}`} alt=""></img>
       </Box>

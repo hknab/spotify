@@ -3,13 +3,12 @@ import { useControlActions } from "./ControlContext";
 const PlayerState = React.createContext();
 const PlayerSetState = React.createContext();
 const initialState = {
-  playlist: [], //playing Playlist
-  itemIndex: 0, // item index in playlist
+  playlist: { musics: [] },
+  playingMusic: {},
   shuffle: false,
   repeat: false,
   indexLogs: [],
   fullscreen: false,
-  playlistId: null,
   play: false,
 };
 
@@ -33,7 +32,7 @@ export function usePlayerSetState() {
 
 export function usePlayerActions() {
   const setPlayerState = usePlayerSetState();
-  const { setTime } = useControlActions();
+  const { setTime, setPosition } = useControlActions();
 
   const setRepeat = () =>
     setPlayerState((prev) => ({ ...prev, repeat: !prev.repeat }));
@@ -44,55 +43,75 @@ export function usePlayerActions() {
   const togglePlay = () =>
     setPlayerState((prev) => ({ ...prev, play: !prev.play }));
 
-  const setPlaylistOrMusic = (playlist, playlistId, musicId) =>
-    setPlayerState((prev) => {
-      if (playlistId === prev.playlistId) {
-        if (musicId !== prev.itemIndex) return { ...prev };
-        const itemIndex = playlist?.findIndex((t) => t.id === musicId);
-        return { ...prev, itemIndex, play: true };
-      }
-      if (prev.shuffle) {
-        const max = playlist.length - 1;
-        const random = Math.floor(Math.random() * max);
-        return {
-          ...prev,
-          playlist,
-          playlistId,
-          itemIndex: random,
-          play: true,
-        };
-      }
+  const setPlayerMusic = (playlist, musicId) => {
+    const set = (prev) => {
+      const musicIndex = playlist.musics?.findIndex((t) => t.id === musicId);
       return {
         ...prev,
         playlist,
-        playlistId,
-        itemIndex: 0,
+        playingMusic: { ...playlist.musics[musicIndex] },
         play: true,
       };
-    });
+    };
+    setPlayerState(set);
+  };
+
+  const setPlayerPlaylist = (playlist, play = true) => {
+    const set = (prev) => {
+      if (prev.shuffle) {
+        const max = playlist.musics.length - 1;
+        const musicIndex = Math.floor(Math.random() * max);
+        return {
+          ...prev,
+          playlist,
+          playingMusic: playlist.musics[musicIndex],
+          play,
+        };
+      } else {
+        return {
+          ...prev,
+          playlist,
+          playingMusic: playlist.musics[0],
+          play,
+        };
+      }
+    };
+    setPlayerState(set);
+  };
 
   const getNext = () =>
     setPlayerState((prev) => {
-      const { shuffle, indexLogs } = prev;
+      const { shuffle, indexLogs, playlist, playingMusic } = prev;
+      const { musics } = playlist;
       const logs = indexLogs;
-      const { itemIndex, playlist } = prev;
-      const max = playlist.length - 1;
+      const max = musics.length - 1;
       const min = 0;
+      const playingMusicIndex = musics.findIndex(
+        (t) => t.id === playingMusic.id
+      );
+      if (max === 0) return { ...prev };
       setTime(0);
-
-      const buildIndexLogs = (itemIndex) => {
-        if (logs.length === 3) {
+      const buildIndexLogs = (musicIndex) => {
+        if (logs.length === 2) {
           logs.shift();
-          logs.push(itemIndex);
+          logs.push(musicIndex);
           return logs;
         } else {
-          logs.push(itemIndex);
+          logs.push(musicIndex);
           return logs;
         }
       };
 
       if (shuffle) {
         const randomIndex = () => {
+          const next = playingMusicIndex + 1;
+          if (max <= 3) {
+            if (next > max) {
+              return 0;
+            } else {
+              return next;
+            }
+          }
           const random = Math.floor(Math.random() * max);
           const some = logs.some((log) => log === random);
           if (some) {
@@ -106,15 +125,15 @@ export function usePlayerActions() {
         const newIndexLogs = buildIndexLogs(newItemIndex);
         return {
           ...prev,
-          itemIndex: newItemIndex,
+          playingMusic: musics[newItemIndex],
           indexLogs: newIndexLogs,
         };
-      } else if (itemIndex < max) {
-        const newItemIndex = itemIndex + 1;
+      } else if (playingMusicIndex < max) {
+        const newItemIndex = playingMusicIndex + 1;
         const newIndexLogs = buildIndexLogs(newItemIndex);
         return {
           ...prev,
-          itemIndex: newItemIndex,
+          playingMusic: musics[newItemIndex],
           indexLogs: newIndexLogs,
         };
       } else {
@@ -123,7 +142,7 @@ export function usePlayerActions() {
 
         return {
           ...prev,
-          itemIndex: newItemIndex,
+          playingMusic: musics[newItemIndex],
           indexLogs: newIndexLogs,
         };
       }
@@ -131,21 +150,40 @@ export function usePlayerActions() {
 
   const getPrevious = () =>
     setPlayerState((prev) => {
-      const { indexLogs } = prev;
+      const { indexLogs, playlist, playingMusic } = prev;
+      const { musics } = playlist;
       const logs = indexLogs;
-      const { itemIndex, playlist } = prev;
-      const max = playlist.length - 1;
+      const max = musics.length - 1;
       const min = 0;
+      const playingMusicIndex = musics.findIndex(
+        (t) => t.id === playingMusic.id
+      );
+      if (max === 0) {
+        setPosition(0);
+        return { ...prev };
+      }
       setTime(0);
 
       if (indexLogs.length > 1) {
         logs.pop();
-        const itemIndex = logs[logs.length - 1];
-        return { ...prev, itemIndex, indexLogs: logs };
-      } else if (itemIndex > min) {
-        return { ...prev, itemIndex: itemIndex - 1, indexLogs: [] };
+        const newMusicIndex = logs[logs.length - 1];
+        return {
+          ...prev,
+          playingMusic: musics[newMusicIndex],
+          indexLogs: logs,
+        };
+      } else if (playingMusicIndex > min) {
+        return {
+          ...prev,
+          playingMusic: musics[playingMusicIndex - 1],
+          indexLogs: [],
+        };
       } else {
-        return { ...prev, itemIndex: max, indexLogs: [] };
+        return {
+          ...prev,
+          playingMusic: musics[max],
+          indexLogs: [],
+        };
       }
     });
 
@@ -158,9 +196,10 @@ export function usePlayerActions() {
     setShuffle,
     getNext,
     getPrevious,
-    setPlaylistOrMusic,
     toggleFullscreen,
     togglePlay,
+    setPlayerPlaylist,
+    setPlayerMusic,
   };
 }
 

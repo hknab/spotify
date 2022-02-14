@@ -7,7 +7,7 @@ import { ReactComponent as LikeEmptyIcon } from "assets/icons/like-empty.svg";
 import { ReactComponent as LikeFillIcon } from "assets/icons/like-fill.svg";
 //fake-data
 import SongArtistCover from "fake-data/song-artist.jpg";
-function SongArtist() {
+function SongArtist({ item, index }) {
   const [like, setLike] = React.useState(false);
   const [hover, setHover] = React.useState();
   const handleLike = () => {
@@ -72,7 +72,7 @@ function SongArtist() {
             </IconButton>
           ) : (
             <Typography variant="body1" color="neutral.1">
-              15
+              {index + 1}
             </Typography>
           )}
         </Box>

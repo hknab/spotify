@@ -1,6 +1,4 @@
-
 .scrollbar {
-
   /* width */
   &::-webkit-scrollbar {
     width: 5px;
@@ -8,60 +6,60 @@
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0);
-
+    background: rgba(0, 0, 0, 0);
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     border-radius: 4px;
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
   }
 
-  &:hover{
-  /* width */
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
+  &:hover {
+    /* width */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
 
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: #777777;
-  }
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #777777;
+    }
 
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #535353;
-    border-radius: 4px;
-  }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #535353;
+      border-radius: 4px;
+    }
 
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
   }
 }
-}
-@media screen and (-webkit-min-device-pixel-ratio:0)
-and (min-resolution:.001dpcm) {
-  .scrollbar{
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .scrollbar {
     overflow: overlay;
   }
 }
-@supports (-moz-appearance:none) {
+@supports (-moz-appearance: none) {
   .scrollbar {
-
     width: 5px;
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
     &:hover {
-      scrollbar-color:  #777777  #535353;
-
+      scrollbar-color: #777777 #535353;
     }
   }
+}
+a {
+  text-decoration: none;
+  cursor: unset;
 }

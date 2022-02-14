@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import MenuItemButton from "components/molecules/MenuItemButton";
 import Divider from "@mui/material/Divider";
 import { menuItems } from "navbar-items";
-import MenuItemIcon from 'components/molecules/MenuItemIcon'
-function MenuItems({open}) {
+import MenuItemIcon from "components/molecules/MenuItemIcon";
+function MenuItems({ open }) {
   const renderGroup = (item, index) => {
     return (
       <Box
@@ -13,7 +13,7 @@ function MenuItems({open}) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          "& > .MuiMenuItem-root ~ .MuiMenuItem-root": {
+          "& > * ~ *": {
             marginTop: "16px !important",
           },
         }}
@@ -29,16 +29,18 @@ function MenuItems({open}) {
     );
   };
   const renderItems = (item, index) => {
-      if(open){
-          return (
-              <MenuItemButton icon={item.Icon} text={item.text} key={index} />
-          )
-      }else {
-          return (
-              <MenuItemIcon icon={item.Icon}  key={index}/>
-          )
-      }
-     ;
+    if (open) {
+      return (
+        <MenuItemButton
+          icon={item.Icon}
+          text={item.text}
+          key={index}
+          link={item.link}
+        />
+      );
+    } else {
+      return <MenuItemIcon icon={item.Icon} key={index} link={item.link} />;
+    }
   };
   return (
     <Box sx={{ marginTop: "40px", width: "100%" }}>

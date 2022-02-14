@@ -4,8 +4,7 @@ import Search from "components/molecules/Search";
 import NavigateButton from "components/molecules/NavigateButton";
 import NotificationButton from "components/molecules/NotificationButton";
 import ProfileAvatar from "components/molecules/ProfileAvatar";
-function HeaderBody({ hideSearch, background }) {
-  console.log(background);
+function HeaderBody({ hideSearch, background, children }) {
   const handleBackground = () => {
     if (background) {
       if (background.active) {
@@ -52,6 +51,7 @@ function HeaderBody({ hideSearch, background }) {
           <NavigateButton direction="forward" active={true} />
         </Box>
         {!hideSearch && <Search />}
+        {background.active && children}
       </Box>
       <Box
         sx={{

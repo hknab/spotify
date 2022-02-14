@@ -1,5 +1,4 @@
 import React from "react";
-import { useUpdateUser, useUser } from "hooks/user";
 const ControlState = React.createContext();
 const ControlSetState = React.createContext();
 

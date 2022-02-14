@@ -2,11 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import { ReactComponent as SearchIcon } from "assets/icons/search-empty.svg";
-function Search() {
-  const [value, setValue] = React.useState("");
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+function Search({ value, handleChange, sx }) {
   return (
     <Box
       sx={{
@@ -14,9 +10,10 @@ function Search() {
         height: "32px",
         borderRadius: "26px",
         backgroundColor: "secondary.4",
-        color: "neutral.2",
+        color: "neutral.3",
         display: "flex",
         alignItems: "center",
+        ...sx,
       }}
     >
       <Box
@@ -38,7 +35,7 @@ function Search() {
         sx={{
           width: "200px",
           marginLeft: "16px",
-          color: "neutral.2",
+          color: "currentColor",
           height: "100%",
           fontSize: "10px",
           lineHeight: "12px",

@@ -11,20 +11,20 @@ function Audio() {
   const { volume, position } = useControlState();
   const control = useControlState();
 
-  const { itemIndex, playlist, repeat, play } = usePlayerState();
+  const { playlist, repeat, play, playingMusic } = usePlayerState();
+  const { musics } = playlist;
   const { getNext } = usePlayerActions();
 
   //Load and config ref.current
   React.useEffect(() => {
-    const item = playlist[itemIndex];
-    if (!item || !ref.current) return null;
-    ref.current.src = "http://localhost:4000" + item.src;
+    if (!playingMusic || !ref.current) return null;
+    ref.current.src = "http://localhost:4000" + playingMusic.src;
 
     ref.current.onloadedmetadata = onLoaded;
     ref.current.onended = () => {
       setEnded(true);
     };
-  }, [itemIndex, playlist]);
+  }, [playingMusic, musics]);
 
   //handle change Play and Pause and volume
   React.useEffect(() => {
