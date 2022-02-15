@@ -58,7 +58,7 @@ function typography(theme) {
       color: heading,
       fontStyle: "normal",
       fontWeight: "normal",
-      fontSize: "12px",
+      fontSize: "13px",
       lineHeight: "14px",
     },
     body3: {

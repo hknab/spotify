@@ -26,11 +26,9 @@ function PlaylistBody() {
       const filtredList = data.musics.filter((i) => {
         const regex = new RegExp(searchQuery, "i");
         const search = i.title.search(regex);
-        console.log(search);
         if (search < 0) return false;
         else return true;
       });
-      console.log(filtredList);
       setList(filtredList);
     }
   }, [searchQuery]);

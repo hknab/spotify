@@ -19,28 +19,27 @@ import ActivityAvatar from "fake-data/activity-avatar.jpg";
 //     text: "The Right Thoughts,Right Wo...",
 //   },
 // };
-function Activity({data}) {
+function Activity({ data }) {
   return (
     <Box
       sx={{
         display: "flex",
-          width:"100%",
+        width: "100%",
         maxWidth: "221px",
         height: "56px",
         alignItems: "center",
         padding: "6px 8px",
         "&:hover": { backgroundColor: "secondary.3" },
         // backgroundColor: "neutral.3",
-
       }}
     >
       <Avatar
-          src={data.avatar}
+        src={data.avatar}
         sx={{
           width: "36px",
           height: "36px",
-            marginRight:"8px",
-            cursor:"pointer"
+          marginRight: "8px",
+          cursor: "pointer",
         }}
       />
       <Box
@@ -48,8 +47,9 @@ function Activity({data}) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-evenly",
-            width:"100%",
-            cursor:"pointer"
+          width: "100%",
+          cursor: "pointer",
+          whiteSpace: "nowrap",
         }}
       >
         <Box item sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -68,7 +68,7 @@ function Activity({data}) {
           }}
         >
           <Typography variant="body3">{data.track[0]}</Typography>
-            {data.track[1] && <DotIcon/>}
+          {data.track[1] && <DotIcon />}
           <Typography variant="body3">{data.track[1]}</Typography>
         </Box>
         <Box

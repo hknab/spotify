@@ -37,23 +37,22 @@ function Info() {
           },
         }}
       >
-        <Typography variant="body2">{data.title}</Typography>
+        <Typography variant="body1">{data.title}</Typography>
         <Typography variant="body3" color="neutral.1">
           {data.subTitle || null}
         </Typography>
       </Box>
       <Box
         sx={{
-          width: "66px",
+          width: "90px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-evenly",
           marginLeft: "12px",
           "& > div": {
-            width: "16px",
-            height: "16px",
+            width: "22px",
+            height: "22px",
             color: "primary.main",
-            cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

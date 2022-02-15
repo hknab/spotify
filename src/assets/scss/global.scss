@@ -60,6 +60,16 @@
   }
 }
 a {
-  text-decoration: none;
+  text-decoration: unset;
   cursor: unset;
+  background-color: unset;
+  &:active,
+  &:visited {
+    text-decoration: unset;
+    cursor: unset;
+    background-color: unset;
+  }
+}
+body {
+  user-select: none;
 }

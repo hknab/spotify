@@ -12,9 +12,7 @@ import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
 import { usePlayerActions } from "context/PlayerContext";
 import { useParams } from "react-router-dom";
 import { usePlaylist } from "hooks/playlist";
-//fake-data
-
-import userAvatar from "fake-data/user-avatar.jpg";
+import PlayingAnimation from "components/atoms/PlayingAnimation";
 function SongArtist({ item, index, playingMusic, play, playlist }) {
   const { id } = useParams();
   const { data } = usePlaylist(id);
@@ -39,20 +37,22 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
   const playPauseButton = () => {
     if (playingMusic.id === item.id) {
       if (play) {
-        return (
-          <IconButton onClick={handleTogglePlay} color="primary">
-            <RowsIcon
-              width="13px"
-              height="13px"
-              fill="white"
-              style={{ transform: "rotate(90deg)" }}
-            />
-          </IconButton>
-        );
+        if (hover)
+          return (
+            <IconButton onClick={handleTogglePlay} color="primary">
+              <RowsIcon
+                width="13px"
+                height="13px"
+                fill="white"
+                style={{ transform: "rotate(90deg)" }}
+              />
+            </IconButton>
+          );
+        else return <PlayingAnimation />;
       } else {
         return (
           <IconButton onClick={handleTogglePlay} color="primary">
-            <PlayIcon width="12px" height="15px" />
+            <PlayIcon width="12px" height="15px" color="white" />
           </IconButton>
         );
       }
@@ -60,7 +60,7 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
       if (hover)
         return (
           <IconButton onClick={handleClickSetMusic} color="primary">
-            <PlayIcon width="12px" height="15px" />
+            <PlayIcon width="12px" height="15px" color="white" />
           </IconButton>
         );
       else
@@ -80,16 +80,15 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
         display: "grid",
         gridTemplateRows: "1fr",
         gridTemplateColumns: `
-            minmax(max-content , 2.85fr)
-            minmax(max-content , 1.9fr)
-            minmax(max-content , .65fr)
-            minmax(max-content , 1fr)
-            minmax(max-content , 1.6fr)
-            minmax(max-content , .8fr)`,
+            minmax(max-content , 6fr)
+            minmax(max-content , 4fr)
+            minmax(max-content , 3fr)
+            minmax(max-content , 1fr)`,
         columnGap: "24px",
         alignItems: "center",
         width: "100%",
-
+        gridTemplateColumns: `
+         6fr  4fr  3fr  minmax(120px,1fr)`,
         height: "48px",
         borderRadius: "8px",
         transition: "background-color .3s ease-out",
@@ -162,6 +161,41 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
           {item.date}
         </Typography>
       </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+        }}
+      >
+        {hover && (
+          <Box
+            onClick={handleLike}
+            sx={{
+              width: "16px",
+              height: "16px",
+              "&:active": { transform: "scale(1.1)" },
+              marginRight: "20px",
+            }}
+          >
+            {like ? (
+              <LikeFillIcon width="100%" height="100%" fill="#1db954" />
+            ) : (
+              <LikeEmptyIcon width="100%" height="100%" />
+            )}
+          </Box>
+        )}
+        <Typography variant="body1" color="neutral.1">
+          {item.length}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
+export default SongArtist;
+/*
       <Box
         sx={{
           display: "flex",
@@ -197,34 +231,4 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
           {item.artist}
         </Typography>
       </Box>
-      <Box
-        sx={{
-          width: "81px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box
-          onClick={handleLike}
-          sx={{
-            width: "16px",
-            height: "16px",
-            "&:active": { transform: "scale(1.1)" },
-          }}
-        >
-          {like ? (
-            <LikeFillIcon width="100%" height="100%" fill="#1db954" />
-          ) : (
-            <LikeEmptyIcon width="100%" height="100%" />
-          )}
-        </Box>
-        <Typography variant="body1" color="neutral.1">
-          {item.length}
-        </Typography>
-      </Box>
-    </Box>
-  );
-}
-
-export default SongArtist;
+*/

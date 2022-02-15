@@ -10,6 +10,7 @@ import SongLibrary from "components/molecules/SongLibrary";
 import { usePlaylistState } from "context/PlaylistContext";
 import { usePlayerState } from "context/PlayerContext";
 import CircularProgress from "@mui/material/CircularProgress";
+
 function PlaylistBody() {
   const { id } = useParams();
   const { data, isLoading } = usePlaylist(id);
@@ -26,11 +27,9 @@ function PlaylistBody() {
       const filtredList = data.musics.filter((i) => {
         const regex = new RegExp(searchQuery, "i");
         const search = i.title.search(regex);
-        console.log(search);
         if (search < 0) return false;
         else return true;
       });
-      console.log(filtredList);
       setList(filtredList);
     }
   }, [searchQuery]);

@@ -13,7 +13,6 @@ function Controls() {
   const { setShuffle, setRepeat, getNext, getPrevious, togglePlay } =
     usePlayerActions();
   const [isNavigateActive, setIsNavigateActive] = React.useState(true);
-  //TODO: set shuffle and set Repeat functionality
   const handleClickShuffle = () => setShuffle();
   const handleClickPlay = () => togglePlay();
   const handleClickRepeat = () => setRepeat();
@@ -39,8 +38,8 @@ function Controls() {
   return (
     <Box
       sx={{
-        width: "140px",
-        height: "28px",
+        width: "180px",
+        height: "36px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -51,11 +50,19 @@ function Controls() {
         },
       }}
     >
-      <Box width="16px" height="16px" onClick={handleClickShuffle}>
-        <ShuffleIcon fill={shuffle ? "#1DB954" : "#B3B3B3"} />
+      <Box onClick={handleClickShuffle}>
+        <ShuffleIcon
+          width="20px"
+          height="20px"
+          color={shuffle ? "#1DB954" : "#B3B3B3"}
+        />
       </Box>
-      <Box width="16px" height="16px" onClick={handleClickPrevious}>
-        <PlayLeftIcon />
+      <Box onClick={handleClickPrevious}>
+        <PlayRightIcon
+          width="18px"
+          height="18px"
+          style={{ transform: "rotate(180deg)" }}
+        />
       </Box>
       <Box
         width="28px"
@@ -63,35 +70,34 @@ function Controls() {
         bgcolor="secondary.4"
         borderRadius="50%"
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-        fill="inherit"
+        color="inherit"
         onClick={handleClickPlay}
       >
         {play ? (
           <RowsIcon
             width="13px"
             height="13px"
-            fill="#191414"
+            color="#191414"
             style={{ transform: "rotate(90deg)" }}
           />
         ) : (
           <PlayIcon
             width="9.19px"
             height="10.5px"
-            fill="#191414"
+            color="#191414"
             style={{ marginLeft: "10.5px", marginRight: "8.31px" }}
           />
         )}
       </Box>
-      <Box width="16px" height="16px" onClick={handleClickNext}>
-        <PlayRightIcon />
+      <Box onClick={handleClickNext}>
+        <PlayRightIcon width="18px" height="18px" />
       </Box>
-      <Box
-        width="16px"
-        height="16px"
-        fill="inherit"
-        onClick={handleClickRepeat}
-      >
-        <RepeatIcon fill={repeat ? "#1DB954" : "#B3B3B3"} />
+      <Box fill="inherit" onClick={handleClickRepeat}>
+        <RepeatIcon
+          width="20px"
+          height="20px"
+          color={repeat ? "#1DB954" : "#B3B3B3"}
+        />
       </Box>
     </Box>
   );

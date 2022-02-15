@@ -36,7 +36,7 @@ function PlayerBody() {
           justifyContent: "space-between",
           width: "100%",
           height: "100%",
-          padding: "24px 16px",
+          padding: "0 16px",
         }}
       >
         <Box sx={{ width: "243px" }}>
@@ -46,11 +46,14 @@ function PlayerBody() {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "center",
             flexDirection: "column",
             height: "100%",
             minWidth: "min-content",
             width: "560px",
+            "& > *:first-child": {
+              marginBottom: "10px",
+            },
           }}
         >
           <Controls />

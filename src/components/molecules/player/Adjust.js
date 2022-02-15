@@ -43,21 +43,26 @@ function Adjust() {
       display="flex"
       alignItems="center"
       justifyContent="space-between"
-      width="210px"
+      width="235px"
+      sx={{
+        "& svg:hover": {
+          color: "white",
+        },
+      }}
     >
       <Box
         sx={{
           display: "flex",
-          width: "40px",
+          width: "50px",
           alignItems: "center",
           justifyContent: "space-between",
           marginRight: "8px",
           "& > * ~ *": { marginLeft: "8px" },
-          "& .MuiGrid-item": { width: "16px", height: "16px" },
+          "& .MuiGrid-item": { width: "20px", height: "20px" },
           "& svg": {
             width: "100%",
             height: "100%",
-            stroke: "#B3B3B3",
+            color: "#B3B3B3",
           },
         }}
       >
@@ -70,14 +75,14 @@ function Adjust() {
       </Box>
       <Box
         sx={{
-          width: "138px",
+          width: "158px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           color: "neutral.1",
           "& svg": {
-            width: "12px",
-            height: "12px",
+            width: "18px",
+            height: "18px",
           },
         }}
       >

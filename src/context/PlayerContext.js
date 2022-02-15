@@ -92,7 +92,7 @@ export function usePlayerActions() {
       if (max === 0) return { ...prev };
       setTime(0);
       const buildIndexLogs = (musicIndex) => {
-        if (logs.length === 2) {
+        if (logs.length === 5) {
           logs.shift();
           logs.push(musicIndex);
           return logs;
@@ -105,14 +105,14 @@ export function usePlayerActions() {
       if (shuffle) {
         const randomIndex = () => {
           const next = playingMusicIndex + 1;
-          if (max <= 3) {
+          if (max <= 5) {
             if (next > max) {
               return 0;
             } else {
               return next;
             }
           }
-          const random = Math.floor(Math.random() * max);
+          const random = Math.floor(Math.random() * max + 1);
           const some = logs.some((log) => log === random);
           if (some) {
             const rand = randomIndex();

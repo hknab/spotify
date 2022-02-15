@@ -4,7 +4,10 @@ import Search from "components/molecules/Search";
 import NavigateButton from "components/molecules/NavigateButton";
 import NotificationButton from "components/molecules/NotificationButton";
 import ProfileAvatar from "components/molecules/ProfileAvatar";
+import { useNavigate } from "react-router-dom";
 function HeaderBody({ hideSearch, background, children }) {
+  const navigate = useNavigate();
+
   const handleBackground = () => {
     if (background) {
       if (background.active) {
@@ -17,6 +20,12 @@ function HeaderBody({ hideSearch, background, children }) {
     } else {
       return null;
     }
+  };
+  const handleCLickForward = () => {
+    navigate(1);
+  };
+  const handleCLickBackward = () => {
+    navigate(-1);
   };
   return (
     <Box
@@ -41,14 +50,22 @@ function HeaderBody({ hideSearch, background, children }) {
             display: "flex",
             alignItems: "center",
             height: "100%",
-            width: "72px",
+            width: "85px",
             justifyContent: "space-between",
             marginRight: "16px",
             padding: "4px",
           }}
         >
-          <NavigateButton direction="backward" active={false} />
-          <NavigateButton direction="forward" active={true} />
+          <NavigateButton
+            direction="backward"
+            active
+            onClick={handleCLickBackward}
+          />
+          <NavigateButton
+            direction="forward"
+            active
+            onClick={handleCLickForward}
+          />
         </Box>
         {!hideSearch && <Search />}
         {background.active && children}

@@ -54,6 +54,7 @@ function PlayActions() {
             <PlayIcon
               width="20px"
               height="20px"
+              color="white"
               style={{ marginLeft: "20px", marginRight: "16px" }}
             />
           )}
@@ -79,6 +80,7 @@ function PlayActions() {
           <PlayIcon
             width="20px"
             height="20px"
+            color="white"
             style={{ marginLeft: "20px", marginRight: "16px" }}
           />
         </IconButton>

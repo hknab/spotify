@@ -90,12 +90,12 @@ function Card({ id }) {
                 </IconButton>
               ) : (
                 <IconButton onClick={handleClickToggle} color="primary">
-                  <PlayIcon width="12px" height="15px" />
+                  <PlayIcon width="12px" height="15px" color="white" />
                 </IconButton>
               )
             ) : (
               <IconButton onClick={handleClickActiveButton} color="primary">
-                <PlayIcon width="12px" height="15px" />
+                <PlayIcon width="12px" height="15px" color="white" />
               </IconButton>
             )}
           </Box>
