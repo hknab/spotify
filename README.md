@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+## How I worked on this project
+My goal was to simulate a professional work envionment.
+- I built tis app based on Figma Design: [project on figma](https://www.figma.com/community/file/1063378861946596719)
+- I worked with tasks on Kanban Board.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to navigate this project
+- Somewhat complex stateful logic: [Example code](https://github.com/abdalicodes/spotify/blob/main/src/context/PlayerContext.js)
+- responsive CSS using Grid: [Example code](https://github.com/abdalicodes/spotify/blob/main/src/layout/main/index.js)
+- The application fetches data from tho local json-server: [Example for request api and hooks](https://github.com/abdalicodes/spotify/blob/main/src/hooks/playlist.js)
+- Use Material-Ui (MUI) to build user interface
+
+## Why I build this project anywhay
+- I didn't use a state management library like Redux on purpose. For this app simple UseContext and useState is sufficient. I realized that more and more projects don't use Redux anymore since GraphQL or React-Query are often used for data management.
+- Material-ui is a great library for styling. It includes SX prop as a shortcut for defining custom style. Use Scoped classes, and allows a seamless integration with JS.
+- My plan is to become a full-stack developer eventually. But for the beginning I focus on the frontend. That's why I decided to use JSON-SERVER rather to create a custom server. I have Basic background knowledge as well.
+
+## If I had more time I would change this 
+- Refactor some of the components, especially header components.
+- Add a special backend with Express.js & Mongodb 
+
+## [Watch the YouTube video](https://www.youtube.com/watch?v=qF3OSSuB3Nk)
+## To run the app, be sure to install [spotify-json-server](https://github.com/abdalicodes/spotify-json-server/)
 
 ## Available Scripts
 
@@ -17,7 +36,6 @@ You may also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
 
@@ -27,7 +45,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `yarn eject`
 
@@ -39,32 +56,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
