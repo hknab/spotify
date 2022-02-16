@@ -59,7 +59,7 @@ function PlayerBody() {
           <Controls />
           <TimeLine />
         </Box>
-        <Box sx={{ width: "210" }}>
+        <Box>
           <Adjust />
         </Box>
       </Box>

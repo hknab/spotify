@@ -65,8 +65,8 @@ function Controls() {
         />
       </Box>
       <Box
-        width="28px"
-        height="28px"
+        width="35px"
+        height="35px"
         bgcolor="secondary.4"
         borderRadius="50%"
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
@@ -75,15 +75,15 @@ function Controls() {
       >
         {play ? (
           <RowsIcon
-            width="13px"
-            height="13px"
+            width="18px"
+            height="18px"
             color="#191414"
             style={{ transform: "rotate(90deg)" }}
           />
         ) : (
           <PlayIcon
-            width="9.19px"
-            height="10.5px"
+            width="15px"
+            height="16.5px"
             color="#191414"
             style={{ marginLeft: "10.5px", marginRight: "8.31px" }}
           />

@@ -6,8 +6,8 @@ function PlayingAnimation() {
     <Box sx={{ color: "primary.main" }}>
       <svg
         id="equalizer"
-        width="17px"
-        height="25px"
+        width="13px"
+        height="13px"
         viewBox="0 0 10 7"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"

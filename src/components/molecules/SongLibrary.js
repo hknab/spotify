@@ -10,12 +10,8 @@ import { ReactComponent as LikeIcon } from "assets/icons/like.svg";
 import { ReactComponent as UnlikeIcon } from "assets/icons/unlike.svg";
 import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
 import { usePlayerActions } from "context/PlayerContext";
-import { useParams } from "react-router-dom";
-import { usePlaylist } from "hooks/playlist";
 import PlayingAnimation from "components/atoms/PlayingAnimation";
 function SongArtist({ item, index, playingMusic, play, playlist }) {
-  const { id } = useParams();
-  const { data } = usePlaylist(id);
   const [like, setLike] = React.useState(false);
   const [hover, setHover] = React.useState();
   const { togglePlay, setPlayerMusic } = usePlayerActions();
@@ -32,7 +28,7 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
     togglePlay();
   };
   const handleClickSetMusic = () => {
-    setPlayerMusic(data, item.id);
+    setPlayerMusic(playlist, item.id);
   };
   const playPauseButton = () => {
     if (playingMusic.id === item.id) {

@@ -7,7 +7,7 @@ const initialState = {
   searchQuery: "",
 };
 
-function PlaylistContext({ children }) {
+function SearchContext({ children }) {
   const [state, setState] = useState(initialState);
   return (
     <ContextState.Provider value={state}>
@@ -18,14 +18,14 @@ function PlaylistContext({ children }) {
   );
 }
 export { ContextState, ContextSetState };
-export function usePlaylistState() {
+export function useSearchState() {
   return useContext(ContextState);
 }
-export function usePlaylistSetState() {
+export function useSearchSetState() {
   return useContext(ContextSetState);
 }
-export function usePlaylistActions() {
-  const setState = usePlaylistSetState();
+export function useSearchActions() {
+  const setState = useSearchSetState();
   const setSearchQuery = (searchQuery) => {
     setState((prev) => ({ ...prev, searchQuery }));
   };
@@ -34,4 +34,4 @@ export function usePlaylistActions() {
     setSearchQuery,
   };
 }
-export default PlaylistContext;
+export default SearchContext;

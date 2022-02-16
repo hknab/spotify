@@ -22,7 +22,7 @@ function PlaylistHeader({
     >
       <Box
         sx={{
-          background: gradient.blue1,
+          background: gradient.green2,
           opacity: 0.2,
           width: "100%",
           height: "100%",

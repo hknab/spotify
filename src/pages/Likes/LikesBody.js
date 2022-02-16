@@ -1,36 +1,34 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { usePlaylist } from "hooks/playlist";
+import { useMusics } from "hooks/music";
 import Box from "@mui/material/Box";
 import PlaylistLayout from "pages/PlaylistLayout";
 import gradient from "util/gradient";
 import PlaylistActionBar from "components/organisms/PlaylistActionBar";
 import PlaylistHeader from "components/organisms/PlaylistHeader";
 import SongLibrary from "components/molecules/SongLibrary";
-import { usePlaylistState } from "context/PlaylistContext";
+import { useSearchState } from "context/SearchContext";
 import { usePlayerState } from "context/PlayerContext";
 import CircularProgress from "@mui/material/CircularProgress";
-
-function PlaylistBody() {
-  const { id } = useParams();
-  const { data, isLoading } = usePlaylist(id);
+function LikesBody() {
+  const { data: musics, isLoading } = useMusics({ liked: true });
+  const data = { id: "liked", title: "Liked Songs", cover: "haha", musics };
   const [list, setList] = React.useState([]);
-  const { searchQuery } = usePlaylistState();
+  const { searchQuery } = useSearchState();
   const { playlist, playingMusic, play } = usePlayerState();
   React.useEffect(() => {
     if (!isLoading) {
-      setList(data.musics);
+      setList(musics);
     }
-  }, [data]);
+  }, [musics]);
   React.useEffect(() => {
     if (!isLoading) {
-      const filtredList = data.musics.filter((i) => {
+      const filtered = musics.filter((i) => {
         const regex = new RegExp(searchQuery, "i");
         const search = i.title.search(regex);
         if (search < 0) return false;
         else return true;
       });
-      setList(filtredList);
+      setList(filtered);
     }
   }, [searchQuery]);
   const renderList = React.useCallback(
@@ -42,8 +40,8 @@ function PlaylistBody() {
             item={item}
             index={i}
             playingMusic={playingMusic}
-            playlist={playlist}
             play={play}
+            playlist={data}
           />
         );
       }),
@@ -73,7 +71,7 @@ function PlaylistBody() {
         description={data.description}
       />
       <Box sx={{ marginTop: "22px" }}>
-        <PlaylistActionBar />
+        <PlaylistActionBar data={data} />
         <Box
           sx={{
             display: "flex",
@@ -93,4 +91,4 @@ function PlaylistBody() {
   );
 }
 
-export default PlaylistBody;
+export default LikesBody;

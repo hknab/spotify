@@ -53,6 +53,7 @@ function HeaderComponent({ isWorking = false }) {
             <PlayIcon
               width="20px"
               height="20px"
+              color="white"
               style={{ marginLeft: "14px", marginRight: "10px" }}
             />
           )}
@@ -78,6 +79,7 @@ function HeaderComponent({ isWorking = false }) {
           <PlayIcon
             width="20px"
             height="20px"
+            color="white"
             style={{ marginLeft: "14px", marginRight: "10px" }}
           />
         </IconButton>

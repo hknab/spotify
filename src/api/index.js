@@ -11,9 +11,9 @@ const getUser = async () => {
   return data;
 };
 const editUser = async (user) => {
-    const { data } = await client.put('/user',user)
-    return data
-}
+  const { data } = await client.put("/user", user);
+  return data;
+};
 const updateUser = async (user) => {
   const { data } = await client.patch(`/user`, user);
   return data;
@@ -31,7 +31,7 @@ const createPlaylist = async (Playlist) => {
   const { data } = await client.post("/Playlists", Playlist);
   return data;
 };
-const updatePlaylist = async ({id , ...Playlist}) => {
+const updatePlaylist = async ({ id, ...Playlist }) => {
   const { data } = await client.put(`/Playlists/${id}`, Playlist);
   return data;
 };
@@ -47,7 +47,6 @@ const getFolders = async () => {
   return data;
 };
 const getFolder = async (id) => {
-
   const { data } = await client.get(`/folders/${id}`);
   return data;
 };
@@ -66,20 +65,25 @@ const deleteFolder = async (id) => {
 
 /* -----------------------MUSICS----------------------- */
 
-const getMusics = async () => {
-  const { data } = await client.get("/musics");
+const getMusics = async (config) => {
+  console.log(config);
+  const { data } = await client.get("/musics/", config);
   return data;
 };
 const getMusic = async (id) => {
   const { data } = await client.get(`/musics/${id}`);
   return data;
 };
+const likeMusic = async ({ id, liked }) => {
+  const { data } = await client.patch(`/musics/${id}`, { liked });
+  return data;
+};
 
 /* -----------------------ACTIVITY----------------------- */
 const getActivities = async () => {
-  const {data} = await client.get('/activities')
-  return data
-}
+  const { data } = await client.get("/activities");
+  return data;
+};
 
 export {
   getUser,
@@ -98,4 +102,5 @@ export {
   getMusics,
   getMusic,
   getActivities,
+  likeMusic,
 };

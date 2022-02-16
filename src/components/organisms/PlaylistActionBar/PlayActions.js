@@ -8,13 +8,10 @@ import { usePlayerActions, usePlayerState } from "context/PlayerContext";
 import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
-import { useParams } from "react-router-dom";
-import { usePlaylist } from "hooks/playlist";
-function PlayActions() {
+
+function PlayActions({ data }) {
   const { togglePlay, setPlayerPlaylist } = usePlayerActions();
   const { play, playlist } = usePlayerState();
-  const { id } = useParams();
-  const { data, isLoading } = usePlaylist(id);
   const handleClickLike = () => {};
   const handleClickDownload = () => {};
   const handleClickDots = () => {};

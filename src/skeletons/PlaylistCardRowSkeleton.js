@@ -7,7 +7,7 @@ function PlaylistCardRowSkeleton() {
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Skeleton variant="text" sx={{ height: "50px", width: "200px" }} />
       <Box
-        sx={{
+    sx={{
           marginTop: "16px",
           display: "grid",
           gridAutoRows: 0,
@@ -29,5 +29,5 @@ function PlaylistCardRowSkeleton() {
     </Box>
   );
 }
-
 export default PlaylistCardRowSkeleton;
+

@@ -4,12 +4,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
-import { usePlaylistActions } from "context/PlaylistContext";
+import { useSearchActions } from "context/SearchContext";
 function Filters() {
   const options = ["Custom order", "By name", "By play count"];
   const [searchValue, setSearchValue] = React.useState("");
   const [orderValue, setOrderValue] = React.useState(0);
-  const { setSearchQuery } = usePlaylistActions();
+  const { setSearchQuery } = useSearchActions();
   const handleChangeSearch = (e) => {
     setSearchValue(e.target.value);
   };

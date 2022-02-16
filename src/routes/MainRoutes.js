@@ -3,6 +3,7 @@ import MainLayout from "layout/main";
 import LazyLoader from "components/LazyLoader";
 const Home = LazyLoader(React.lazy(() => import("pages/Home")));
 const Playlist = LazyLoader(React.lazy(() => import("pages/Playlist")));
+const Likes = LazyLoader(React.lazy(() => import("pages/Likes")));
 const MainRoutes = {
   path: "/",
   element: <MainLayout />,
@@ -14,6 +15,10 @@ const MainRoutes = {
     {
       path: "/playlist/:id",
       element: <Playlist />,
+    },
+    {
+      path: "/collection/likes",
+      element: <Likes />,
     },
   ],
 };

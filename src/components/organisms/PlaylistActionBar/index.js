@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import PlayActions from "./PlayActions";
 import Filters from "./Filters";
-function PlaylistActionBar() {
+function PlaylistActionBar({ data }) {
   return (
     <Box
       sx={{
@@ -12,7 +12,7 @@ function PlaylistActionBar() {
         padding: "0 64px",
       }}
     >
-      <PlayActions />
+      <PlayActions data={data} />
       <Filters />
     </Box>
   );

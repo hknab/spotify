@@ -7,14 +7,14 @@ import gradient from "util/gradient";
 import PlaylistActionBar from "components/organisms/PlaylistActionBar";
 import PlaylistHeader from "components/organisms/PlaylistHeader";
 import SongLibrary from "components/molecules/SongLibrary";
-import { usePlaylistState } from "context/PlaylistContext";
+import { useSearchState } from "context/SearchContext";
 import { usePlayerState } from "context/PlayerContext";
 import CircularProgress from "@mui/material/CircularProgress";
 function PlaylistBody() {
   const { id } = useParams();
   const { data, isLoading } = usePlaylist(id);
   const [list, setList] = React.useState([]);
-  const { searchQuery } = usePlaylistState();
+  const { searchQuery } = useSearchState();
   const { playlist, playingMusic, play } = usePlayerState();
   React.useEffect(() => {
     if (!isLoading) {
@@ -23,13 +23,13 @@ function PlaylistBody() {
   }, [data]);
   React.useEffect(() => {
     if (!isLoading) {
-      const filtredList = data.musics.filter((i) => {
+      const filtered = data.musics.filter((i) => {
         const regex = new RegExp(searchQuery, "i");
         const search = i.title.search(regex);
         if (search < 0) return false;
         else return true;
       });
-      setList(filtredList);
+      setList(filtered);
     }
   }, [searchQuery]);
   const renderList = React.useCallback(
@@ -41,8 +41,8 @@ function PlaylistBody() {
             item={item}
             index={i}
             playingMusic={playingMusic}
-            playlist={playlist}
             play={play}
+            playlist={data}
           />
         );
       }),
@@ -72,7 +72,7 @@ function PlaylistBody() {
         description={data.description}
       />
       <Box sx={{ marginTop: "22px" }}>
-        <PlaylistActionBar />
+        <PlaylistActionBar data={data} />
         <Box
           sx={{
             display: "flex",
