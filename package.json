@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.48.0"
+    "sass": "^1.48.0",
+    "yarn-audit-fix": "^9.0.11"
   }
 }

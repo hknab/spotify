@@ -16,10 +16,10 @@ const MainRoutes = {
       path: "/playlist/:id",
       element: <Playlist />,
     },
-    {
-      path: "/collection/likes",
-      element: <Likes />,
-    },
+    // {
+    //   path: "/collection/likes",
+    //   element: <Likes />,
+    // },
   ],
 };
 export default MainRoutes;

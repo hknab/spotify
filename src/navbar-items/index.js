@@ -8,5 +8,5 @@ export const menuItems = [
     { text: "Search", Icon: <SearchIcon />, link: "/search" },
     { text: "library", Icon: <LibraryIcon />, link: "/library" },
   ],
-  [{ text: "Liked Songs", Icon: <LikeIcon />, link: "/collections/likes" }],
+  [{ text: "Liked Songs", Icon: <LikeIcon />, link: "/collection/likes" }],
 ];

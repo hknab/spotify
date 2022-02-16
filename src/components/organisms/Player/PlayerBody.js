@@ -51,7 +51,7 @@ function PlayerBody() {
             height: "100%",
             minWidth: "min-content",
             width: "560px",
-            "& > *:first-child": {
+            "& > *:nth-child(1)": {
               marginBottom: "10px",
             },
           }}
