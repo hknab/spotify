@@ -46,7 +46,7 @@ function MenuCollapseItem() {
       <List component="div" disablePadding>
         {item.children.map((item, index) => {
           return (
-            <Link to={`/playlist/${item.id}`} key={index}>
+            <Link to={`/playlist/${item.id}`} key={item.id}>
               <ListItemButton
                 sx={{
                   pl: 4,
@@ -69,14 +69,14 @@ function MenuCollapseItem() {
   const ItemRender = ({ item, index }) => {
     if (item.children.length > 0) {
       return (
-        <React.Fragment key={index}>
+        <React.Fragment key={item.id}>
           {renderItem(item, index, true)}
           {renderCollapse(item, index)}
         </React.Fragment>
       );
     } else {
       return (
-        <React.Fragment key={index}>
+        <React.Fragment key={item.id}>
           {renderItem(item, index, false)}
         </React.Fragment>
       );
@@ -92,7 +92,7 @@ function MenuCollapseItem() {
       aria-labelledby="nested-list-subheader"
     >
       {data.map((item, index) => {
-        return <ItemRender key={index} item={item} index={index} />;
+        return <ItemRender key={item.id} item={item} index={index} />;
       })}
     </List>
   );

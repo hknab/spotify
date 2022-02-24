@@ -27,7 +27,7 @@ function MenuItemPlaylist() {
   return (
     <List sx={{ width: "100%", maxWidth: 360 }} component="div">
       {data.map((item, index) => {
-        return <ItemRender key={index} item={item} index={index} />;
+        return <ItemRender key={item.id} item={item} index={index} />;
       })}
     </List>
   );

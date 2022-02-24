@@ -8,7 +8,7 @@ function MenuItems({ open }) {
   const renderGroup = (item, index) => {
     return (
       <Box
-        key={index}
+        key={item.text}
         sx={{
           width: "100%",
           display: "flex",
@@ -34,12 +34,12 @@ function MenuItems({ open }) {
         <MenuItemButton
           icon={item.Icon}
           text={item.text}
-          key={index}
+          key={item.text}
           link={item.link}
         />
       );
     } else {
-      return <MenuItemIcon icon={item.Icon} key={index} link={item.link} />;
+      return <MenuItemIcon icon={item.Icon} key={item.text} link={item.link} />;
     }
   };
   return (
