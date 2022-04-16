@@ -1,6 +1,6 @@
 ## How I worked on this project
 My goal was to simulate a professional work envionment.
-- I built tis app based on Figma Design: [project on figma](https://www.figma.com/community/file/1063378861946596719)
+- I built this app based on Figma Design: [project on figma](https://www.figma.com/community/file/1063378861946596719)
 - I worked with tasks on Kanban Board.
 
 ## How to navigate this project
