@@ -1,3 +1,4 @@
+### [Watch the YouTube video](https://www.youtube.com/watch?v=qF3OSSuB3Nk)
 ## How I worked on this project
 My goal was to simulate a professional work envionment.
 - I built this app based on Figma Design: [project on figma](https://www.figma.com/community/file/1063378861946596719)
@@ -18,7 +19,7 @@ My goal was to simulate a professional work envionment.
 - Refactor some of the components, especially header components.
 - Add a special backend with Express.js & Mongodb 
 
-## [Watch the YouTube video](https://www.youtube.com/watch?v=qF3OSSuB3Nk)
+
 ## To run the app, be sure to install [spotify-json-server](https://github.com/abdalicodes/spotify-json-server/)
 
 ## Available Scripts
