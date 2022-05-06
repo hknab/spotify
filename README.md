@@ -1,4 +1,4 @@
-### [Watch the YouTube video](https://www.youtube.com/watch?v=qF3OSSuB3Nk)
+### [Watch the demo video on YouYube](https://www.youtube.com/watch?v=qF3OSSuB3Nk)
 ## How I worked on this project
 My goal was to simulate a professional work envionment.
 - I built this app based on Figma Design: [project on figma](https://www.figma.com/community/file/1063378861946596719)
