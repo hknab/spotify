@@ -74,7 +74,7 @@ function Card({ id }) {
             }}
           >
             <img
-              src={`http://localhost:4000${data.cover}`}
+              src={`https://spotify-backend-json-server.herokuapp.com/${data.cover}`}
               alt=""
               style={{ width: "100%", height: "100%" }}
             ></img>

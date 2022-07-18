@@ -20,7 +20,10 @@ function Info() {
           "& > img": { height: "48px", width: "auto" },
         }}
       >
-        <img src={`http://localhost:4000${data.cover}`} alt=""></img>
+        <img
+          src={`https://spotify-backend-json-server.herokuapp.com/${data.cover}`}
+          alt=""
+        ></img>
       </Box>
       <Box
         sx={{

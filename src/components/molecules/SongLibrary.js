@@ -116,7 +116,7 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
         </Box>
 
         <img
-          src={`http://localhost:4000${item.cover}`}
+          src={`https://spotify-backend-json-server.herokuapp.com/${item.cover}`}
           alt=""
           style={{ height: "48px", borderRadius: "2px" }}
         ></img>

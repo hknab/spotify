@@ -46,7 +46,7 @@ function Fullscreen() {
           content: "''",
           width: "100%",
           height: "100%",
-          background: `url(http://localhost:4000${music.cover})`,
+          background: `url(https://spotify-backend-json-server.herokuapp.com/${music.cover})`,
           filter: "blur(15px) brightness(.5)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%",
@@ -100,7 +100,9 @@ function Fullscreen() {
               "&>img": { height: "100%", width: "auto" },
             }}
           >
-            <img src={`http://localhost:4000${music.cover}`} />
+            <img
+              src={`https://spotify-backend-json-server.herokuapp.com/${music.cover}`}
+            />
           </Box>
           <Box
             sx={{

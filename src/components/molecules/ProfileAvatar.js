@@ -24,7 +24,7 @@ function ProfileAvatar() {
       }}
     >
       <Avatar
-        src={`http://localhost:4000${avatar}`}
+        src={`https://spotify-backend-json-server.herokuapp.com/${avatar}`}
         sx={{
           width: "36px",
           height: "36px",

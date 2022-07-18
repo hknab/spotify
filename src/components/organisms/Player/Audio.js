@@ -18,7 +18,8 @@ function Audio() {
   //Load and config ref.current
   React.useEffect(() => {
     if (!playingMusic || !ref.current) return null;
-    ref.current.src = "http://localhost:4000" + playingMusic.src;
+    ref.current.src =
+      "https://spotify-backend-json-server.herokuapp.com/" + playingMusic.src;
 
     ref.current.onloadedmetadata = onLoaded;
     ref.current.onended = () => {

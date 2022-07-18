@@ -14,7 +14,7 @@ function List() {
           key={activity.title}
           data={{
             ...activity,
-            avatar: `http://localhost:4000${activity.avatar}`,
+            avatar: `https://spotify-backend-json-server.herokuapp.com/${activity.avatar}`,
           }}
         />
       ))}

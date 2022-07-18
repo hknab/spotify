@@ -49,7 +49,7 @@ function PlaylistHeader({
             background: backgroundColor
               ? backgroundColor
               : backgroundImage &&
-                `url(http://localhost:4000/${backgroundImage})`,
+                `url(https://spotify-backend-json-server.herokuapp.com//${backgroundImage})`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -64,7 +64,7 @@ function PlaylistHeader({
                 height: "100%",
                 width: "100%",
               }}
-              src={`http://localhost:4000${cover}`}
+              src={`https://spotify-backend-json-server.herokuapp.com/${cover}`}
             ></Box>
           ) : (
             <Icon />
