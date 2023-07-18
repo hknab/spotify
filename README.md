@@ -10,7 +10,7 @@ My goal was to simulate a professional work envionment.
 - The application fetches data from tho local json-server: [Example for request api and hooks](https://github.com/abdalicodes/spotify/blob/main/src/hooks/playlist.js)
 - Use Material-Ui (MUI) to build user interface
 
-## Why I build this project anywhay
+## Why I build this project anyway
 - I didn't use a state management library like Redux on purpose. For this app simple UseContext and useState is sufficient. I realized that more and more projects don't use Redux anymore since GraphQL or React-Query are often used for data management.
 - Material-ui is a great library for styling. It includes SX prop as a shortcut for defining custom style. Use Scoped classes, and allows a seamless integration with JS.
 - My plan is to become a full-stack developer eventually. But for the beginning I focus on the frontend. That's why I decided to use JSON-SERVER rather to create a custom server. I have Basic background knowledge as well.
