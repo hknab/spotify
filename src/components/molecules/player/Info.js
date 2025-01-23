@@ -1,4 +1,3 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { ReactComponent as LikeIcon } from "assets/icons/like-fill.svg";
@@ -21,7 +20,7 @@ function Info() {
         }}
       >
         <img
-          src={`https://spotify-backend-json-server.herokuapp.com/${data.cover}`}
+          src={`${process.env.REACT_APP_API_URL}/${data.cover}`}
           alt=""
         ></img>
       </Box>

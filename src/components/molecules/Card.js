@@ -1,15 +1,13 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { ReactComponent as PlayIcon } from "assets/icons/play.svg";
-import { ReactComponent as CollaborativeIcon } from "assets/icons/collaborative.svg";
-import { ReactComponent as EyeIcon } from "assets/icons/eye.svg";
 import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
-import { Link } from "react-router-dom";
-import { usePlaylist } from "hooks/playlist";
-import CardSkeleton from "skeletons/CardSkeleton";
 import { usePlayerActions, usePlayerState } from "context/PlayerContext";
+import { usePlaylist } from "hooks/playlist";
+import React from "react";
+import { Link } from "react-router-dom";
+import CardSkeleton from "skeletons/CardSkeleton";
 function Card({ id }) {
   const { data, isLoading } = usePlaylist(id);
   const { setPlayerPlaylist, togglePlay } = usePlayerActions();
@@ -74,7 +72,7 @@ function Card({ id }) {
             }}
           >
             <img
-              src={`https://spotify-backend-json-server.herokuapp.com/${data.cover}`}
+              src={`${process.env.REACT_APP_API_URL}/${data.cover}`}
               alt=""
               style={{ width: "100%", height: "100%" }}
             ></img>

@@ -1,16 +1,13 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import { ReactComponent as PlayIcon } from "assets/icons/play.svg";
 import { ReactComponent as LikeEmptyIcon } from "assets/icons/like-empty.svg";
 import { ReactComponent as LikeFillIcon } from "assets/icons/like-fill.svg";
-import { ReactComponent as LikeIcon } from "assets/icons/like.svg";
-import { ReactComponent as UnlikeIcon } from "assets/icons/unlike.svg";
+import { ReactComponent as PlayIcon } from "assets/icons/play.svg";
 import { ReactComponent as RowsIcon } from "assets/icons/rows.svg";
-import { usePlayerActions } from "context/PlayerContext";
 import PlayingAnimation from "components/atoms/PlayingAnimation";
+import { usePlayerActions } from "context/PlayerContext";
+import React from "react";
 function SongArtist({ item, index, playingMusic, play, playlist }) {
   const [like, setLike] = React.useState(false);
   const [hover, setHover] = React.useState();
@@ -116,7 +113,7 @@ function SongArtist({ item, index, playingMusic, play, playlist }) {
         </Box>
 
         <img
-          src={`https://spotify-backend-json-server.herokuapp.com/${item.cover}`}
+          src={`${process.env.REACT_APP_API_URL}/${item.cover}`}
           alt=""
           style={{ height: "48px", borderRadius: "2px" }}
         ></img>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://spotify-json-server-sand.vercel.app",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 /* -----------------------USER----------------------- */
@@ -86,21 +86,21 @@ const getActivities = async () => {
 };
 
 export {
-  getUser,
-  updateUser,
-  editUser,
-  getPlaylists,
-  getPlaylist,
-  createPlaylist,
-  updatePlaylist,
-  deletePlaylist,
-  getFolders,
-  getFolder,
   createFolder,
-  updateFolder,
+  createPlaylist,
   deleteFolder,
-  getMusics,
-  getMusic,
+  deletePlaylist,
+  editUser,
   getActivities,
+  getFolder,
+  getFolders,
+  getMusic,
+  getMusics,
+  getPlaylist,
+  getPlaylists,
+  getUser,
   likeMusic,
+  updateFolder,
+  updatePlaylist,
+  updateUser,
 };

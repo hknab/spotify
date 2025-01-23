@@ -1,6 +1,6 @@
+import { useControlActions, useControlState } from "context/ControlContext";
+import { usePlayerActions, usePlayerState } from "context/PlayerContext";
 import React from "react";
-import { useControlState, useControlActions } from "context/ControlContext";
-import { usePlayerState, usePlayerActions } from "context/PlayerContext";
 
 function Audio() {
   const ref = React.useRef();
@@ -18,8 +18,7 @@ function Audio() {
   //Load and config ref.current
   React.useEffect(() => {
     if (!playingMusic || !ref.current) return null;
-    ref.current.src =
-      "https://spotify-backend-json-server.herokuapp.com/" + playingMusic.src;
+    ref.current.src = `${process.env.REACT_APP_API_URL}/${playingMusic.src}`;
 
     ref.current.onloadedmetadata = onLoaded;
     ref.current.onended = () => {

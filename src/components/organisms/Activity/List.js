@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import { useActivities } from "hooks/activity";
 import Activity from "components/molecules/Activity";
+import { useActivities } from "hooks/activity";
 
 function List() {
   const { data: activities, isLoading: activitiesLoading } = useActivities({
@@ -14,7 +14,7 @@ function List() {
           key={activity.title}
           data={{
             ...activity,
-            avatar: `https://spotify-backend-json-server.herokuapp.com/${activity.avatar}`,
+            avatar: `${process.env.REACT_APP_API_URL}/${activity.avatar}`,
           }}
         />
       ))}

@@ -1,10 +1,10 @@
-import React from "react";
 import Box from "@mui/material/Box";
-import { usePlayerState, usePlayerActions } from "context/PlayerContext";
-import Controls from "components/molecules/player/Controls";
-import TimeLine from "components/molecules/player/TimeLine";
 import Typography from "@mui/material/Typography";
 import { ReactComponent as ExitFullscreenIcon } from "assets/icons/exit-fullscreen.svg";
+import Controls from "components/molecules/player/Controls";
+import TimeLine from "components/molecules/player/TimeLine";
+import { usePlayerActions, usePlayerState } from "context/PlayerContext";
+import React from "react";
 
 function Fullscreen() {
   const { fullscreen, playingMusic } = usePlayerState();
@@ -46,7 +46,7 @@ function Fullscreen() {
           content: "''",
           width: "100%",
           height: "100%",
-          background: `url(https://spotify-backend-json-server.herokuapp.com/${music.cover})`,
+          background: `url(${process.env.REACT_APP_API_URL}/${music.cover})`,
           filter: "blur(15px) brightness(.5)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%",
@@ -100,9 +100,7 @@ function Fullscreen() {
               "&>img": { height: "100%", width: "auto" },
             }}
           >
-            <img
-              src={`https://spotify-backend-json-server.herokuapp.com/${music.cover}`}
-            />
+            <img src={`${process.env.REACT_APP_API_URL}/${music.cover}`} />
           </Box>
           <Box
             sx={{

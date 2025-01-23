@@ -1,6 +1,5 @@
-import React from "react";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 //fake data
 import { useUser } from "hooks/user";
@@ -24,7 +23,7 @@ function ProfileAvatar() {
       }}
     >
       <Avatar
-        src={`https://spotify-backend-json-server.herokuapp.com/${avatar}`}
+        src={`${process.env.REACT_APP_API_URL}/${avatar}`}
         sx={{
           width: "36px",
           height: "36px",

@@ -1,7 +1,6 @@
-import React from "react";
 import Box from "@mui/material/Box";
-import gradient from "util/gradient";
 import Typography from "@mui/material/Typography";
+import gradient from "util/gradient";
 
 function PlaylistHeader({
   title,
@@ -49,7 +48,7 @@ function PlaylistHeader({
             background: backgroundColor
               ? backgroundColor
               : backgroundImage &&
-                `url(https://spotify-backend-json-server.herokuapp.com//${backgroundImage})`,
+                `url(${process.env.REACT_APP_API_URL}//${backgroundImage})`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -64,7 +63,7 @@ function PlaylistHeader({
                 height: "100%",
                 width: "100%",
               }}
-              src={`https://spotify-backend-json-server.herokuapp.com/${cover}`}
+              src={`${process.env.REACT_APP_API_URL}/${cover}`}
             ></Box>
           ) : (
             <Icon />
