@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://spotify-backend-json-server.herokuapp.com/",
+  baseURL: "https://spotify-json-server-sand.vercel.app/",
 });
 
 /* -----------------------USER----------------------- */
